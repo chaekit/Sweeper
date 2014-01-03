@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19738E4D1875A6D900461F96 /* Cocoa.framework */; };
+		19738E581875A6D900461F96 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19738E561875A6D900461F96 /* InfoPlist.strings */; };
+		19738E5A1875A6D900461F96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E591875A6D900461F96 /* main.m */; };
+		19738E5E1875A6D900461F96 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 19738E5C1875A6D900461F96 /* Credits.rtf */; };
+		19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E601875A6D900461F96 /* SWAppDelegate.m */; };
+		19738E641875A6D900461F96 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19738E621875A6D900461F96 /* MainMenu.xib */; };
+		19738E661875A6D900461F96 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19738E651875A6D900461F96 /* Images.xcassets */; };
+		19738E6D1875A6D900461F96 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19738E6C1875A6D900461F96 /* XCTest.framework */; };
+		19738E6E1875A6D900461F96 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19738E4D1875A6D900461F96 /* Cocoa.framework */; };
+		19738E761875A6D900461F96 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19738E741875A6D900461F96 /* InfoPlist.strings */; };
+		19738E781875A6D900461F96 /* SweeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E771875A6D900461F96 /* SweeperTests.m */; };
+		19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E851875ADBA00461F96 /* SWUnProcessedFile.m */; };
+		19738E871875ADBA00461F96 /* SWUnProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E851875ADBA00461F96 /* SWUnProcessedFile.m */; };
+		19ACB3B318764B7C00168B38 /* SWFileStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B218764B7C00168B38 /* SWFileStack.m */; };
+		19ACB3B418764B7C00168B38 /* SWFileStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B218764B7C00168B38 /* SWFileStack.m */; };
+		19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B618764D4700168B38 /* SWFileStackHandler.m */; };
+		19ACB3B818764D4700168B38 /* SWFileStackHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B618764D4700168B38 /* SWFileStackHandler.m */; };
+		19ACB3BA18764E4700168B38 /* SWFileStackHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */; };
+		19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
+		19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
+		19ACB3C418766CFE00168B38 /* SWFileStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19ACB3C318766CFE00168B38 /* SWFileStackView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19738E6F1875A6D900461F96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19738E421875A6D900461F96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19738E491875A6D900461F96;
+			remoteInfo = Sweeper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		19738E4A1875A6D900461F96 /* Sweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19738E4D1875A6D900461F96 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		19738E501875A6D900461F96 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		19738E511875A6D900461F96 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		19738E521875A6D900461F96 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		19738E551875A6D900461F96 /* Sweeper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sweeper-Info.plist"; sourceTree = "<group>"; };
+		19738E571875A6D900461F96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		19738E591875A6D900461F96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		19738E5B1875A6D900461F96 /* Sweeper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sweeper-Prefix.pch"; sourceTree = "<group>"; };
+		19738E5D1875A6D900461F96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		19738E5F1875A6D900461F96 /* SWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAppDelegate.h; sourceTree = "<group>"; };
+		19738E601875A6D900461F96 /* SWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAppDelegate.m; sourceTree = "<group>"; };
+		19738E631875A6D900461F96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		19738E651875A6D900461F96 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		19738E6B1875A6D900461F96 /* SweeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19738E6C1875A6D900461F96 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		19738E731875A6D900461F96 /* SweeperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SweeperTests-Info.plist"; sourceTree = "<group>"; };
+		19738E751875A6D900461F96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		19738E771875A6D900461F96 /* SweeperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SweeperTests.m; sourceTree = "<group>"; };
+		19738E841875ADBA00461F96 /* SWUnProcessedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWUnProcessedFile.h; path = Models/SWUnProcessedFile.h; sourceTree = "<group>"; };
+		19738E851875ADBA00461F96 /* SWUnProcessedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUnProcessedFile.m; path = Models/SWUnProcessedFile.m; sourceTree = "<group>"; };
+		19ACB3B118764B7C00168B38 /* SWFileStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStack.h; path = Models/SWFileStack.h; sourceTree = "<group>"; };
+		19ACB3B218764B7C00168B38 /* SWFileStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStack.m; path = Models/SWFileStack.m; sourceTree = "<group>"; };
+		19ACB3B518764D4700168B38 /* SWFileStackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackHandler.h; path = Controllers/SWFileStackHandler.h; sourceTree = "<group>"; };
+		19ACB3B618764D4700168B38 /* SWFileStackHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackHandler.m; path = Controllers/SWFileStackHandler.m; sourceTree = "<group>"; };
+		19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFileStackHandlerTests.m; sourceTree = "<group>"; };
+		19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackViewController.h; path = Controllers/SWFileStackViewController.h; sourceTree = "<group>"; };
+		19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackViewController.m; path = Controllers/SWFileStackViewController.m; sourceTree = "<group>"; };
+		19ACB3C318766CFE00168B38 /* SWFileStackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SWFileStackView.xib; path = Views/SWFileStackView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19738E471875A6D900461F96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19738E681875A6D900461F96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19738E6E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
+				19738E6D1875A6D900461F96 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19738E411875A6D900461F96 = {
+			isa = PBXGroup;
+			children = (
+				19738E531875A6D900461F96 /* Sweeper */,
+				19738E711875A6D900461F96 /* SweeperTests */,
+				19738E4C1875A6D900461F96 /* Frameworks */,
+				19738E4B1875A6D900461F96 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		19738E4B1875A6D900461F96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19738E4A1875A6D900461F96 /* Sweeper.app */,
+				19738E6B1875A6D900461F96 /* SweeperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19738E4C1875A6D900461F96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19738E4D1875A6D900461F96 /* Cocoa.framework */,
+				19738E6C1875A6D900461F96 /* XCTest.framework */,
+				19738E4F1875A6D900461F96 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		19738E4F1875A6D900461F96 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19738E501875A6D900461F96 /* AppKit.framework */,
+				19738E511875A6D900461F96 /* CoreData.framework */,
+				19738E521875A6D900461F96 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19738E531875A6D900461F96 /* Sweeper */ = {
+			isa = PBXGroup;
+			children = (
+				19738E831875A73F00461F96 /* Controllers */,
+				19738E821875A73B00461F96 /* Views */,
+				19738E811875A73700461F96 /* Models */,
+				19738E5F1875A6D900461F96 /* SWAppDelegate.h */,
+				19738E601875A6D900461F96 /* SWAppDelegate.m */,
+				19738E621875A6D900461F96 /* MainMenu.xib */,
+				19738E651875A6D900461F96 /* Images.xcassets */,
+				19738E541875A6D900461F96 /* Supporting Files */,
+			);
+			path = Sweeper;
+			sourceTree = "<group>";
+		};
+		19738E541875A6D900461F96 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19738E551875A6D900461F96 /* Sweeper-Info.plist */,
+				19738E561875A6D900461F96 /* InfoPlist.strings */,
+				19738E591875A6D900461F96 /* main.m */,
+				19738E5B1875A6D900461F96 /* Sweeper-Prefix.pch */,
+				19738E5C1875A6D900461F96 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19738E711875A6D900461F96 /* SweeperTests */ = {
+			isa = PBXGroup;
+			children = (
+				19738E771875A6D900461F96 /* SweeperTests.m */,
+				19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */,
+				19738E721875A6D900461F96 /* Supporting Files */,
+			);
+			path = SweeperTests;
+			sourceTree = "<group>";
+		};
+		19738E721875A6D900461F96 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19738E731875A6D900461F96 /* SweeperTests-Info.plist */,
+				19738E741875A6D900461F96 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19738E811875A73700461F96 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19738E841875ADBA00461F96 /* SWUnProcessedFile.h */,
+				19738E851875ADBA00461F96 /* SWUnProcessedFile.m */,
+				19ACB3B118764B7C00168B38 /* SWFileStack.h */,
+				19ACB3B218764B7C00168B38 /* SWFileStack.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		19738E821875A73B00461F96 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19ACB3C318766CFE00168B38 /* SWFileStackView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		19738E831875A73F00461F96 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19ACB3B518764D4700168B38 /* SWFileStackHandler.h */,
+				19ACB3B618764D4700168B38 /* SWFileStackHandler.m */,
+				19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */,
+				19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19738E491875A6D900461F96 /* Sweeper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19738E7B1875A6D900461F96 /* Build configuration list for PBXNativeTarget "Sweeper" */;
+			buildPhases = (
+				19738E461875A6D900461F96 /* Sources */,
+				19738E471875A6D900461F96 /* Frameworks */,
+				19738E481875A6D900461F96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sweeper;
+			productName = Sweeper;
+			productReference = 19738E4A1875A6D900461F96 /* Sweeper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		19738E6A1875A6D900461F96 /* SweeperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19738E7E1875A6D900461F96 /* Build configuration list for PBXNativeTarget "SweeperTests" */;
+			buildPhases = (
+				19738E671875A6D900461F96 /* Sources */,
+				19738E681875A6D900461F96 /* Frameworks */,
+				19738E691875A6D900461F96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19738E701875A6D900461F96 /* PBXTargetDependency */,
+			);
+			name = SweeperTests;
+			productName = SweeperTests;
+			productReference = 19738E6B1875A6D900461F96 /* SweeperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19738E421875A6D900461F96 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SW;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = JCLab;
+				TargetAttributes = {
+					19738E6A1875A6D900461F96 = {
+						TestTargetID = 19738E491875A6D900461F96;
+					};
+				};
+			};
+			buildConfigurationList = 19738E451875A6D900461F96 /* Build configuration list for PBXProject "Sweeper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19738E411875A6D900461F96;
+			productRefGroup = 19738E4B1875A6D900461F96 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19738E491875A6D900461F96 /* Sweeper */,
+				19738E6A1875A6D900461F96 /* SweeperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19738E481875A6D900461F96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19738E581875A6D900461F96 /* InfoPlist.strings in Resources */,
+				19ACB3C418766CFE00168B38 /* SWFileStackView.xib in Resources */,
+				19738E661875A6D900461F96 /* Images.xcassets in Resources */,
+				19738E5E1875A6D900461F96 /* Credits.rtf in Resources */,
+				19738E641875A6D900461F96 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19738E691875A6D900461F96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19738E761875A6D900461F96 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19738E461875A6D900461F96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19ACB3B318764B7C00168B38 /* SWFileStack.m in Sources */,
+				19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
+				19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */,
+				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
+				19738E5A1875A6D900461F96 /* main.m in Sources */,
+				19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19738E671875A6D900461F96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19ACB3BA18764E4700168B38 /* SWFileStackHandlerTests.m in Sources */,
+				19ACB3B418764B7C00168B38 /* SWFileStack.m in Sources */,
+				19ACB3B818764D4700168B38 /* SWFileStackHandler.m in Sources */,
+				19738E781875A6D900461F96 /* SweeperTests.m in Sources */,
+				19738E871875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
+				19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19738E701875A6D900461F96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19738E491875A6D900461F96 /* Sweeper */;
+			targetProxy = 19738E6F1875A6D900461F96 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		19738E561875A6D900461F96 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19738E571875A6D900461F96 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		19738E5C1875A6D900461F96 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19738E5D1875A6D900461F96 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		19738E621875A6D900461F96 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19738E631875A6D900461F96 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		19738E741875A6D900461F96 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19738E751875A6D900461F96 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19738E791875A6D900461F96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		19738E7A1875A6D900461F96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		19738E7C1875A6D900461F96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
+				INFOPLIST_FILE = "Sweeper/Sweeper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		19738E7D1875A6D900461F96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
+				INFOPLIST_FILE = "Sweeper/Sweeper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		19738E7F1875A6D900461F96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sweeper.app/Contents/MacOS/Sweeper";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SweeperTests/SweeperTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		19738E801875A6D900461F96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sweeper.app/Contents/MacOS/Sweeper";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
+				INFOPLIST_FILE = "SweeperTests/SweeperTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19738E451875A6D900461F96 /* Build configuration list for PBXProject "Sweeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19738E791875A6D900461F96 /* Debug */,
+				19738E7A1875A6D900461F96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19738E7B1875A6D900461F96 /* Build configuration list for PBXNativeTarget "Sweeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19738E7C1875A6D900461F96 /* Debug */,
+				19738E7D1875A6D900461F96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19738E7E1875A6D900461F96 /* Build configuration list for PBXNativeTarget "SweeperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19738E7F1875A6D900461F96 /* Debug */,
+				19738E801875A6D900461F96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 19738E421875A6D900461F96 /* Project object */;
+}
