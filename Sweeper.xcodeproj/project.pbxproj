@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190953F21876BD0C00943549 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
+		190953F31876BD0C00943549 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
+		190953F61876BD6600943549 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
+		190953F81876BD9C00943549 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
+		19487F2D1876A9A2003B637B /* SWProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19487F2C1876A9A2003B637B /* SWProcessedFile.m */; };
+		19487F2E1876A9A2003B637B /* SWProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19487F2C1876A9A2003B637B /* SWProcessedFile.m */; };
 		19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19738E4D1875A6D900461F96 /* Cocoa.framework */; };
 		19738E581875A6D900461F96 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19738E561875A6D900461F96 /* InfoPlist.strings */; };
 		19738E5A1875A6D900461F96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E591875A6D900461F96 /* main.m */; };
@@ -40,7 +46,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		190953F51876BD5700943549 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				190953F61876BD6600943549 /* OCMock.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190953F71876BD9300943549 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				190953F81876BD9C00943549 /* OCMock.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		190953F11876BD0C00943549 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = "<group>"; };
+		19487F2B1876A9A2003B637B /* SWProcessedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWProcessedFile.h; path = Models/SWProcessedFile.h; sourceTree = "<group>"; };
+		19487F2C1876A9A2003B637B /* SWProcessedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWProcessedFile.m; path = Models/SWProcessedFile.m; sourceTree = "<group>"; };
 		19738E4A1875A6D900461F96 /* Sweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19738E4D1875A6D900461F96 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		19738E501875A6D900461F96 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -77,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190953F21876BD0C00943549 /* OCMock.framework in Frameworks */,
 				19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19738E6E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
+				190953F31876BD0C00943549 /* OCMock.framework in Frameworks */,
 				19738E6D1875A6D900461F96 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +149,7 @@
 		19738E4C1875A6D900461F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				190953F11876BD0C00943549 /* OCMock.framework */,
 				19738E4D1875A6D900461F96 /* Cocoa.framework */,
 				19738E6C1875A6D900461F96 /* XCTest.framework */,
 				19738E4F1875A6D900461F96 /* Other Frameworks */,
@@ -185,6 +220,8 @@
 				19738E851875ADBA00461F96 /* SWUnProcessedFile.m */,
 				19ACB3B118764B7C00168B38 /* SWFileStack.h */,
 				19ACB3B218764B7C00168B38 /* SWFileStack.m */,
+				19487F2B1876A9A2003B637B /* SWProcessedFile.h */,
+				19487F2C1876A9A2003B637B /* SWProcessedFile.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -218,6 +255,7 @@
 				19738E461875A6D900461F96 /* Sources */,
 				19738E471875A6D900461F96 /* Frameworks */,
 				19738E481875A6D900461F96 /* Resources */,
+				190953F71876BD9300943549 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -235,6 +273,7 @@
 				19738E671875A6D900461F96 /* Sources */,
 				19738E681875A6D900461F96 /* Frameworks */,
 				19738E691875A6D900461F96 /* Resources */,
+				190953F51876BD5700943549 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -312,6 +351,7 @@
 				19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
 				19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */,
 				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
+				19487F2D1876A9A2003B637B /* SWProcessedFile.m in Sources */,
 				19738E5A1875A6D900461F96 /* main.m in Sources */,
 				19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */,
 			);
@@ -325,6 +365,7 @@
 				19ACB3B418764B7C00168B38 /* SWFileStack.m in Sources */,
 				19ACB3B818764D4700168B38 /* SWFileStackHandler.m in Sources */,
 				19738E781875A6D900461F96 /* SweeperTests.m in Sources */,
+				19487F2E1876A9A2003B637B /* SWProcessedFile.m in Sources */,
 				19738E871875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
 				19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */,
 			);
@@ -449,9 +490,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jaychae/Developers/Personal/Sweeper,
+					/Users/jaychae/Developers/Personal/Sweeper/Frameworks,
+					"/Volumes/OCMock\\ 2.2.2/OSX",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
 				INFOPLIST_FILE = "Sweeper/Sweeper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,9 +510,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jaychae/Developers/Personal/Sweeper,
+					/Users/jaychae/Developers/Personal/Sweeper/Frameworks,
+					"/Volumes/OCMock\\ 2.2.2/OSX",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
 				INFOPLIST_FILE = "Sweeper/Sweeper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -478,6 +533,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					/Users/jaychae/Developers/Personal/Sweeper,
+					/Users/jaychae/Developers/Personal/Sweeper/Frameworks,
+					"/Volumes/OCMock\\ 2.2.2/OSX",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
@@ -501,6 +559,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					/Users/jaychae/Developers/Personal/Sweeper,
+					/Users/jaychae/Developers/Personal/Sweeper/Frameworks,
+					"/Volumes/OCMock\\ 2.2.2/OSX",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";

@@ -10,6 +10,7 @@
 #import "SWFileStackHandler.h"
 #import "SWFileStack.h"
 #import "SWUnProcessedFile.h"
+#import "SWAppDelegate.h"
 
 @interface SWFileStackViewController ()
 
@@ -24,9 +25,27 @@
     self = [super init];
     if (self) {
         [self _initDataStorage];
+//        SWAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+//        [appDelegate.window makeFirstResponder:self];
+        NSLog(@"wtf");
     }
     return self;
 }
+
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+    NSLog(@"mouse");
+}
+
+- (void)keyDown:(NSEvent *)theEvent {
+    if ([[theEvent characters] isEqualToString:@"m"]) {
+        NSLog(@"move file");
+    }
+}
+
 
 - (void)_initDataStorage {
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Documents"]; // Harcoded URL for dev

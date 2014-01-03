@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
     </dependencies>
     <objects>
@@ -651,7 +652,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <view key="contentView" id="372">
+            <view key="contentView" id="372" customClass="SWFileStackViewController">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -731,7 +732,13 @@
                         </tableHeaderView>
                     </scrollView>
                 </subviews>
+                <connections>
+                    <outlet property="fileTableView" destination="7cC-Ma-Raf" id="PSa-k1-wb5"/>
+                </connections>
             </view>
+            <connections>
+                <outlet property="initialFirstResponder" destination="372" id="c4C-Eg-LhQ"/>
+            </connections>
         </window>
         <customObject id="494" customClass="SWAppDelegate">
             <connections>

@@ -9,8 +9,11 @@
 #import "SWFileStackHandler.h"
 #import "SWFileStack.h"
 #import "SWUnProcessedFile.h"
+#import "SWProcessedFile.h"
 
 @interface SWFileStackHandler ()
+
+@property (nonatomic, strong) NSWorkspace *workspace;
 
 @end
 
@@ -18,12 +21,14 @@
 
 @synthesize unprocessedFileStack;
 @synthesize processedFileStack;
+@synthesize workspace;
 
 - (id)init {
     self = [super init];
     if (self) {
         unprocessedFileStack = [[SWFileStack alloc] init];
         processedFileStack = [[SWFileStack alloc] init];
+        workspace = [[NSWorkspace alloc] init];
     }
     return self;
 }
@@ -42,6 +47,31 @@
     }
     NSLog(@"%@", handler.unprocessedFileStack);
     return handler;
+}
+
+
+- (void)removeHeadFile {
+    SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
+    NSString *unprocessedFilePath = [unprocessedFile filePath];
+    NSLog(@"filePath  %@", unprocessedFilePath);
+    [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]]  completionHandler:nil];   //handle error
+    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Remove"];
+    [processedFile setCurrentPath:@"Trash"];
+    [processedFileStack pushObject:processedFile];
+}
+
+- (void)moveHeadFileToDirectoryAtPath:(NSString *)aURLString {
+    
+}
+
+- (void)deferHeadFile {
+    SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
+    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Defer"];
+    [processedFile setCurrentPath:@"Not Changed"];
+    [processedFileStack pushObject:processedFile];
+}
+
+- (void)undoPreviousAction {
 }
 
 @end

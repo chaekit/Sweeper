@@ -18,4 +18,9 @@
 @property (nonatomic, strong) SWFileStack *unprocessedFileStack;
 @property (nonatomic, strong) SWFileStack *processedFileStack;
 
+- (void)removeHeadFile;
+- (void)moveHeadFileToDirectoryAtPath:(NSString *)aURLString;
+- (void)deferHeadFile;
+- (void)undoPreviousAction;
+
 @end

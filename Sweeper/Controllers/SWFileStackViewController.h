@@ -10,7 +10,7 @@
 
 @class SWFileStackHandler;
 
-@interface SWFileStackViewController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
+@interface SWFileStackViewController : NSView <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet NSTableView *fileTableView;
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
