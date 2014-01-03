@@ -27,6 +27,7 @@
         [self _initDataStorage];
 //        SWAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 //        [appDelegate.window makeFirstResponder:self];
+        [fileTableView setAllowsTypeSelect:NO];
         NSLog(@"wtf");
     }
     return self;
@@ -36,21 +37,22 @@
     return YES;
 }
 
-- (void)mouseDown:(NSEvent *)theEvent {
-    NSLog(@"mouse");
-}
-
 - (void)keyDown:(NSEvent *)theEvent {
-    if ([[theEvent characters] isEqualToString:@"m"]) {
+    NSString *keyCharacter = [theEvent characters];
+    if ([keyCharacter isEqualToString:@"m"]) {
         NSLog(@"move file");
+    } else if ([keyCharacter isEqualToString:@"x"]) {
+        NSLog(@"delete file");
+    } else if ([keyCharacter isEqualToString:@"l"]) {
+        NSLog(@"defer file");
+    } else if ([keyCharacter isEqualToString:@"z"]) {
+        NSLog(@"undo action");
     }
 }
-
 
 - (void)_initDataStorage {
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Documents"]; // Harcoded URL for dev
 }
-
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [fileStackHandler.unprocessedFileStack stackCount];

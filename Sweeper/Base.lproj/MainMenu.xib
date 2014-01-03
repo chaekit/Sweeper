@@ -663,7 +663,7 @@
                             <rect key="frame" x="1" y="17" width="480" height="344"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="64" headerView="pej-Z9-3gl" viewBased="YES" id="7cC-Ma-Raf">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" headerView="pej-Z9-3gl" viewBased="YES" id="7cC-Ma-Raf">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="344"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
