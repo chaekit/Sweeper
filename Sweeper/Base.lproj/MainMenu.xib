@@ -650,27 +650,27 @@
         <window title="Sweeper" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="616" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="372" customClass="SWFileStackViewController">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="616" height="460"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="66" horizontalPageScroll="10" verticalLineScroll="66" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov7-Iq-90O">
-                        <rect key="frame" x="-1" y="-1" width="482" height="362"/>
+                        <rect key="frame" x="-1" y="-1" width="618" height="397"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="YAy-27-Fdc">
-                            <rect key="frame" x="1" y="17" width="480" height="344"/>
+                            <rect key="frame" x="1" y="17" width="616" height="379"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" headerView="pej-Z9-3gl" viewBased="YES" id="7cC-Ma-Raf">
-                                    <rect key="frame" x="0.0" y="0.0" width="480" height="344"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="616" height="379"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="fileColumn" width="477" minWidth="40" maxWidth="1000" id="Bqi-jK-HkI">
+                                        <tableColumn identifier="fileColumn" width="613" minWidth="40" maxWidth="1000" id="Bqi-jK-HkI">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -684,7 +684,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="SWFileStackViewCell" id="EtA-Q8-F05">
-                                                    <rect key="frame" x="1" y="1" width="477" height="60"/>
+                                                    <rect key="frame" x="1" y="1" width="613" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LeT-rW-2vL">
@@ -693,7 +693,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="0S8-7k-w89"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G93-vj-def">
-                                                            <rect key="frame" x="76" y="22" width="324" height="17"/>
+                                                            <rect key="frame" x="76" y="22" width="460" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" id="g6Z-L9-f95">
                                                                 <font key="font" metaFont="system"/>
@@ -727,12 +727,25 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="pej-Z9-3gl">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="616" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="leV-cN-owB">
+                        <rect key="frame" x="-1" y="404" width="618" height="56"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="vkq-Jt-4tb">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="372" id="idm-pb-sxY"/>
+                        </connections>
+                    </textField>
                 </subviews>
                 <connections>
+                    <outlet property="directorySearchBar" destination="leV-cN-owB" id="bff-Yo-63m"/>
                     <outlet property="fileTableView" destination="7cC-Ma-Raf" id="PSa-k1-wb5"/>
                 </connections>
             </view>

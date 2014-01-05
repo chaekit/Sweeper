@@ -70,4 +70,12 @@
     return nil;
 }
 
+#pragma mark -
+#pragma NSTextFieldDelegate methods
+
+- (void)controlTextDidChange:(NSNotification *)obj {
+    NSString *searchQueryString = [[[obj.userInfo valueForKey:@"NSFieldEditor"] textStorage] string];
+    NSLog(@"%@", searchQueryString);
+}
+
 @end
