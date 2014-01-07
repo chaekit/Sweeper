@@ -26,6 +26,7 @@
 		19738E781875A6D900461F96 /* SweeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E771875A6D900461F96 /* SweeperTests.m */; };
 		19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E851875ADBA00461F96 /* SWUnProcessedFile.m */; };
 		19738E871875ADBA00461F96 /* SWUnProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E851875ADBA00461F96 /* SWUnProcessedFile.m */; };
+		198D297D187BE7C2001DA802 /* SWDirectorySearchCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 198D297C187BE7C2001DA802 /* SWDirectorySearchCellView.m */; };
 		19ACB3B318764B7C00168B38 /* SWFileStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B218764B7C00168B38 /* SWFileStack.m */; };
 		19ACB3B418764B7C00168B38 /* SWFileStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B218764B7C00168B38 /* SWFileStack.m */; };
 		19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B618764D4700168B38 /* SWFileStackHandler.m */; };
@@ -93,6 +94,8 @@
 		19738E771875A6D900461F96 /* SweeperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SweeperTests.m; sourceTree = "<group>"; };
 		19738E841875ADBA00461F96 /* SWUnProcessedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWUnProcessedFile.h; path = Models/SWUnProcessedFile.h; sourceTree = "<group>"; };
 		19738E851875ADBA00461F96 /* SWUnProcessedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUnProcessedFile.m; path = Models/SWUnProcessedFile.m; sourceTree = "<group>"; };
+		198D297B187BE7C2001DA802 /* SWDirectorySearchCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWDirectorySearchCellView.h; path = Views/SWDirectorySearchCellView.h; sourceTree = "<group>"; };
+		198D297C187BE7C2001DA802 /* SWDirectorySearchCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWDirectorySearchCellView.m; path = Views/SWDirectorySearchCellView.m; sourceTree = "<group>"; };
 		19ACB3B118764B7C00168B38 /* SWFileStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStack.h; path = Models/SWFileStack.h; sourceTree = "<group>"; };
 		19ACB3B218764B7C00168B38 /* SWFileStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStack.m; path = Models/SWFileStack.m; sourceTree = "<group>"; };
 		19ACB3B518764D4700168B38 /* SWFileStackHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackHandler.h; path = Controllers/SWFileStackHandler.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 		19738E821875A73B00461F96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				198D297B187BE7C2001DA802 /* SWDirectorySearchCellView.h */,
+				198D297C187BE7C2001DA802 /* SWDirectorySearchCellView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
 				19487F2D1876A9A2003B637B /* SWProcessedFile.m in Sources */,
 				19738E5A1875A6D900461F96 /* main.m in Sources */,
+				198D297D187BE7C2001DA802 /* SWDirectorySearchCellView.m in Sources */,
 				19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

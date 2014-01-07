@@ -13,6 +13,7 @@
 @interface SWFileStackViewController : NSView <NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet NSTableView *fileTableView;
+@property (nonatomic, strong) IBOutlet NSTableView *directorySearchTableView;
 @property (nonatomic, strong) IBOutlet NSTextField *directorySearchBar;
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
 @property (nonatomic, retain) NSMutableArray *directoriesInUserHomeDirectory;

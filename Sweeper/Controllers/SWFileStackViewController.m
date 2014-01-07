@@ -11,8 +11,12 @@
 #import "SWFileStack.h"
 #import "SWUnProcessedFile.h"
 #import "SWAppDelegate.h"
+#import "SWDirectorySearchCellView.h"
 
 @interface SWFileStackViewController ()
+
+@property (nonatomic, strong) NSArray *directorySearchResult;
+@property (nonatomic) BOOL initialized;
 
 @end
 
@@ -21,30 +25,27 @@
 @synthesize fileTableView;
 @synthesize fileStackHandler;
 @synthesize directoriesInUserHomeDirectory;
+@synthesize directorySearchTableView;
+@synthesize directorySearchBar;
+@synthesize directorySearchResult;
 
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
     if (self) {
         [self _initDataStorage];
         [self _initDirectoriesInUserHomeDirectory];
-        [self.directorySearchBar setDelegate:self];
         [fileTableView setAllowsTypeSelect:NO];
+        self.initialized = NO;
     }
     return self;
 }
 
-//- (id)init {
-//    self = [super init];
-//    if (self) {
-//        [self _initDataStorage];
-//        [self _initDirectoriesInUserHomeDirectory];
-//        [fileTableView setAllowsTypeSelect:NO];
-//    }
-//    return self;
-//}
-//
 - (void)awakeFromNib {
-    [self.directorySearchBar setDelegate:self];
+    if (!self.initialized) {
+        [self _initDataStorage];
+        [self _initDirectoriesInUserHomeDirectory];
+        self.initialized = YES;
+    }
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -52,6 +53,10 @@
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
+  
+    /*
+     Actions for responding to file action events
+     */
     NSString *keyCharacter = [theEvent characters];
     if ([keyCharacter isEqualToString:@"m"]) {
         NSLog(@"move file");
@@ -61,6 +66,16 @@
         NSLog(@"defer file");
     } else if ([keyCharacter isEqualToString:@"z"]) {
         NSLog(@"undo action");
+    }
+    
+    /*
+     Action for responding to selecting destination file path event (usually RETURN key)
+     */
+    if ([keyCharacter isEqualToString:@"\r"]) {
+        if ([directorySearchTableView selectedRow] > -1) {
+            NSURL *url = [directorySearchResult objectAtIndex:[directorySearchTableView selectedRow]];
+            NSLog(@"%@ url bitch", url);
+        }
     }
 }
 
@@ -80,34 +95,56 @@
                                                                      return NO;
                                                                  }];
    
-    int i = 0;
     self.directoriesInUserHomeDirectory = [[NSMutableArray alloc] init];
     for (NSURL *url in directoryEnumerator) {
         NSNumber *isDirectory;
         [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
         if ([isDirectory boolValue]) {
-//            NSLog(@"url   %@", [url path]);
-//            NSLog(@"last path component   %@", [url lastPathComponent]);
-            [self.directoriesInUserHomeDirectory addObject:[url lastPathComponent]];
-//            if (i++ == 10) break;
+            [self.directoriesInUserHomeDirectory addObject:url];
         }
     }
     NSLog(@"%@", self);
-//    NSLog(@"wtf bitches   %@", directoriesInUserHomeDirectory);
 }
 
+#pragma mark -
+#pragma NSTableViewDelegate & NSTableViewDataSource methods
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return [fileStackHandler.unprocessedFileStack stackCount];
+    if ([tableView isEqual:fileTableView]) {
+        return [fileStackHandler.unprocessedFileStack stackCount];
+    } else if ([tableView isEqual:directorySearchTableView]) {
+        return [directorySearchResult count];
+    }
+    return 1;
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSString *identifier = [tableColumn identifier];
-    if ([identifier isEqualToString:@"fileColumn"]) {
-        NSTableCellView *cellView = [tableView makeViewWithIdentifier:@"SWFileStackViewCell" owner:self];
-        SWUnProcessedFile *unprocessedFile = [fileStackHandler.unprocessedFileStack fileAtIndex:row];
-        [cellView.textField setStringValue:[unprocessedFile fileName]];
-        [cellView.imageView setImage:[unprocessedFile fileIcon]];
-        return cellView;
+    if ([tableView isEqual:fileTableView]) {
+        NSString *identifier = [tableColumn identifier];
+        if ([identifier isEqualToString:@"fileColumn"]) {
+            NSTableCellView *cellView = [tableView makeViewWithIdentifier:@"SWFileStackViewCell" owner:self];
+            SWUnProcessedFile *unprocessedFile = [fileStackHandler.unprocessedFileStack fileAtIndex:row];
+            [cellView.textField setStringValue:[unprocessedFile fileName]];
+            [cellView.imageView setImage:[unprocessedFile fileIcon]];
+            return cellView;
+        }
+        return nil;
+    } else if ([tableView isEqual:directorySearchTableView]) {
+        NSString *identifier = [tableColumn identifier];
+        if ([identifier isEqualToString:@"searchColumn"]) {
+            NSWorkspace *workspace = [[NSWorkspace alloc] init];
+            SWDirectorySearchCellView *cellView = [tableView makeViewWithIdentifier:@"SWDirectorySearchCellView" owner:self];
+            
+            NSURL *directoryURL = directorySearchResult[row];
+            NSString *fullPath = [directoryURL path];
+            NSString *directoryName = [fullPath lastPathComponent];
+            NSImage *iconImage = [workspace iconForFile:fullPath];
+           
+            [cellView.fullPathTextField setStringValue:fullPath];
+            [cellView.nameTextField setStringValue:directoryName];
+            [cellView.iconImageView setImage:iconImage];
+            return cellView;
+        }
     }
     return nil;
 }
@@ -117,17 +154,17 @@
 
 - (void)controlTextDidChange:(NSNotification *)obj {
     NSString *searchQueryString = [[[obj.userInfo valueForKey:@"NSFieldEditor"] textStorage] string];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[c] %@", searchQueryString];
-    
-    NSLog(@"self  %@", self);
-    NSArray *filterdArray = [directoriesInUserHomeDirectory filteredArrayUsingPredicate:predicate];
-    if ([filterdArray count] > 10) {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.lastPathComponent BEGINSWITH[c] %@", searchQueryString];
+   
+    NSLog(@"query string  %@", searchQueryString);
+    directorySearchResult = [directoriesInUserHomeDirectory filteredArrayUsingPredicate:predicate];
+    if ([directorySearchResult count] > 10) {
         NSRange range;
         range.location = 0;
         range.length = 10;
-        [filterdArray subarrayWithRange:range];
-        NSLog(@"%@",[filterdArray subarrayWithRange:range]);
+        directorySearchResult = [directorySearchResult subarrayWithRange:range];
     }
+    [directorySearchTableView reloadData];
 }
 
 @end
