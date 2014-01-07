@@ -15,5 +15,6 @@
 @property (nonatomic, strong) IBOutlet NSTableView *fileTableView;
 @property (nonatomic, strong) IBOutlet NSTextField *directorySearchBar;
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
+@property (nonatomic, strong) NSMutableArray *directoriesInUserHomeDirectory;
 
 @end

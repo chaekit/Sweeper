@@ -20,15 +20,14 @@
 
 @synthesize fileTableView;
 @synthesize fileStackHandler;
+@synthesize directoriesInUserHomeDirectory;
 
 - (id)init {
     self = [super init];
     if (self) {
         [self _initDataStorage];
-//        SWAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-//        [appDelegate.window makeFirstResponder:self];
+        [self _initDirectoriesInUserHomeDirectory];
         [fileTableView setAllowsTypeSelect:NO];
-        NSLog(@"wtf");
     }
     return self;
 }
@@ -52,6 +51,31 @@
 
 - (void)_initDataStorage {
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Documents"]; // Harcoded URL for dev
+}
+
+- (void)_initDirectoriesInUserHomeDirectory {
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSURL *userURL = [NSURL URLWithString:@"/Users/jaychae"];
+    NSDirectoryEnumerator *directoryEnumerator = [fileManager enumeratorAtURL:userURL
+                                                   includingPropertiesForKeys:@[NSURLIsDirectoryKey, NSURLNameKey]
+                                                                      options:(NSDirectoryEnumerationSkipsHiddenFiles|NSDirectoryEnumerationSkipsPackageDescendants)
+                                                                 errorHandler:^BOOL(NSURL *url, NSError *error) {
+                                                                     NSLog(@"Error occured while traversing URL : %@", [url absoluteString]);
+                                                                     NSLog(@"Error : %@", [error localizedDescription]);
+                                                                     return NO;
+                                                                 }];
+   
+//    int i = 0;
+    for (NSURL *url in directoryEnumerator) {
+        NSNumber *isDirectory;
+        [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
+        if ([isDirectory boolValue]) {
+//            NSLog(@"url   %@", [url path]);
+//            NSLog(@"last path component   %@", [url lastPathComponent]);
+            [directoriesInUserHomeDirectory addObject:[url lastPathComponent]];
+//            if (i++ == 10) break;
+        }
+    }
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
