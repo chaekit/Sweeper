@@ -33,7 +33,6 @@
 		19ACB3BA18764E4700168B38 /* SWFileStackHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */; };
 		19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
 		19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
-		19ACB3C418766CFE00168B38 /* SWFileStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19ACB3C318766CFE00168B38 /* SWFileStackView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +100,6 @@
 		19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFileStackHandlerTests.m; sourceTree = "<group>"; };
 		19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackViewController.h; path = Controllers/SWFileStackViewController.h; sourceTree = "<group>"; };
 		19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackViewController.m; path = Controllers/SWFileStackViewController.m; sourceTree = "<group>"; };
-		19ACB3C318766CFE00168B38 /* SWFileStackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SWFileStackView.xib; path = Views/SWFileStackView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +227,6 @@
 		19738E821875A73B00461F96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				19ACB3C318766CFE00168B38 /* SWFileStackView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				19738E581875A6D900461F96 /* InfoPlist.strings in Resources */,
-				19ACB3C418766CFE00168B38 /* SWFileStackView.xib in Resources */,
 				19738E661875A6D900461F96 /* Images.xcassets in Resources */,
 				19738E5E1875A6D900461F96 /* Credits.rtf in Resources */,
 				19738E641875A6D900461F96 /* MainMenu.xib in Resources */,

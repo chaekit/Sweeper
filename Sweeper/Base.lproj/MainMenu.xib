@@ -739,9 +739,6 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
-                        <connections>
-                            <outlet property="delegate" destination="372" id="idm-pb-sxY"/>
-                        </connections>
                     </textField>
                 </subviews>
                 <connections>
@@ -761,6 +758,7 @@
         <customObject id="420" customClass="NSFontManager"/>
         <customObject id="yU4-jK-Qjh" customClass="SWFileStackViewController">
             <connections>
+                <outlet property="directorySearchBar" destination="leV-cN-owB" id="KBj-Tg-b07"/>
                 <outlet property="fileTableView" destination="7cC-Ma-Raf" id="UY2-TM-Svi"/>
             </connections>
         </customObject>

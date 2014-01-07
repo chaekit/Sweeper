@@ -22,14 +22,29 @@
 @synthesize fileStackHandler;
 @synthesize directoriesInUserHomeDirectory;
 
-- (id)init {
-    self = [super init];
+- (id)initWithFrame:(NSRect)frameRect {
+    self = [super initWithFrame:frameRect];
     if (self) {
         [self _initDataStorage];
         [self _initDirectoriesInUserHomeDirectory];
+        [self.directorySearchBar setDelegate:self];
         [fileTableView setAllowsTypeSelect:NO];
     }
     return self;
+}
+
+//- (id)init {
+//    self = [super init];
+//    if (self) {
+//        [self _initDataStorage];
+//        [self _initDirectoriesInUserHomeDirectory];
+//        [fileTableView setAllowsTypeSelect:NO];
+//    }
+//    return self;
+//}
+//
+- (void)awakeFromNib {
+    [self.directorySearchBar setDelegate:self];
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -65,17 +80,20 @@
                                                                      return NO;
                                                                  }];
    
-//    int i = 0;
+    int i = 0;
+    self.directoriesInUserHomeDirectory = [[NSMutableArray alloc] init];
     for (NSURL *url in directoryEnumerator) {
         NSNumber *isDirectory;
         [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
         if ([isDirectory boolValue]) {
 //            NSLog(@"url   %@", [url path]);
 //            NSLog(@"last path component   %@", [url lastPathComponent]);
-            [directoriesInUserHomeDirectory addObject:[url lastPathComponent]];
+            [self.directoriesInUserHomeDirectory addObject:[url lastPathComponent]];
 //            if (i++ == 10) break;
         }
     }
+    NSLog(@"%@", self);
+//    NSLog(@"wtf bitches   %@", directoriesInUserHomeDirectory);
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -99,7 +117,17 @@
 
 - (void)controlTextDidChange:(NSNotification *)obj {
     NSString *searchQueryString = [[[obj.userInfo valueForKey:@"NSFieldEditor"] textStorage] string];
-    NSLog(@"%@", searchQueryString);
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[c] %@", searchQueryString];
+    
+    NSLog(@"self  %@", self);
+    NSArray *filterdArray = [directoriesInUserHomeDirectory filteredArrayUsingPredicate:predicate];
+    if ([filterdArray count] > 10) {
+        NSRange range;
+        range.location = 0;
+        range.length = 10;
+        [filterdArray subarrayWithRange:range];
+        NSLog(@"%@",[filterdArray subarrayWithRange:range]);
+    }
 }
 
 @end
