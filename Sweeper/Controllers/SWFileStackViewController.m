@@ -28,6 +28,8 @@
 @synthesize directorySearchTableView;
 @synthesize directorySearchBar;
 @synthesize directorySearchResult;
+@synthesize directorySearchTableViewContainer;
+@synthesize fileTableViewContainer;
 
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
@@ -45,6 +47,8 @@
         [self _initDataStorage];
         [self _initDirectoriesInUserHomeDirectory];
         self.initialized = YES;
+//        [self hideSearchBar];
+//        [directorySearchTableView setAlphaValue:0.0];
     }
 }
 
@@ -60,6 +64,7 @@
     NSString *keyCharacter = [theEvent characters];
     if ([keyCharacter isEqualToString:@"m"]) {
         NSLog(@"move file");
+        [self showSearchBar];
     } else if ([keyCharacter isEqualToString:@"x"]) {
         NSLog(@"delete file");
     } else if ([keyCharacter isEqualToString:@"l"]) {
@@ -77,6 +82,10 @@
             NSLog(@"%@ url bitch", url);
         }
     }
+}
+
+- (void)cancelOperation:(id)sender {
+    [self hideSearchBar];
 }
 
 - (void)_initDataStorage {
@@ -105,6 +114,18 @@
     }
     NSLog(@"%@", self);
 }
+
+- (void)showSearchBar {
+    [fileTableViewContainer setFrame:NSMakeRect(0, -67, 616, 464)];
+    [fileTableViewContainer setAlphaValue:0.0];
+}
+
+- (void)hideSearchBar {
+    [fileTableViewContainer setFrame:NSMakeRect(0, -3, 616, 464)];
+    [fileTableViewContainer setAlphaValue:1.0];
+    [directorySearchTableViewContainer setAlphaValue:0.0];
+}
+
 
 #pragma mark -
 #pragma NSTableViewDelegate & NSTableViewDataSource methods
@@ -163,6 +184,12 @@
         range.location = 0;
         range.length = 10;
         directorySearchResult = [directorySearchResult subarrayWithRange:range];
+    }
+    
+    if ([directorySearchResult count] > 0) {
+        [directorySearchTableViewContainer setAlphaValue:1.0];
+    } else {
+        [directorySearchTableViewContainer setAlphaValue:0.0];
     }
     [directorySearchTableView reloadData];
 }

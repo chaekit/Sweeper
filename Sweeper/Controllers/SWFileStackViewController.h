@@ -15,7 +15,13 @@
 @property (nonatomic, strong) IBOutlet NSTableView *fileTableView;
 @property (nonatomic, strong) IBOutlet NSTableView *directorySearchTableView;
 @property (nonatomic, strong) IBOutlet NSTextField *directorySearchBar;
+@property (nonatomic, strong) IBOutlet NSScrollView *directorySearchTableViewContainer;
+@property (nonatomic, strong) IBOutlet NSScrollView *fileTableViewContainer;
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
 @property (nonatomic, retain) NSMutableArray *directoriesInUserHomeDirectory;
+
+
+- (void)showSearchBar;
+- (void)hideSearchBar;
 
 @end
