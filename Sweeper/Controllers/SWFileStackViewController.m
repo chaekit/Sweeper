@@ -70,6 +70,8 @@
     } else if ([keyCharacter isEqualToString:@"l"]) {
         NSLog(@"defer file");
     } else if ([keyCharacter isEqualToString:@"z"]) {
+        [fileStackHandler undoPreviousAction];
+        [fileTableView reloadData];
         NSLog(@"undo action");
     }
     

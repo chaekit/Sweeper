@@ -45,7 +45,6 @@
         SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
         [handler.unprocessedFileStack pushObject:unprocessedFile];
     }
-    NSLog(@"%@", handler.unprocessedFileStack);
     return handler;
 }
 
@@ -54,9 +53,10 @@
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     NSString *unprocessedFilePath = [unprocessedFile filePath];
     NSLog(@"filePath  %@", unprocessedFilePath);
-    [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]]  completionHandler:nil];   //handle error
+    [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]] completionHandler:nil];
     SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Remove"];
-    [processedFile setCurrentPath:@"Trash"];
+    NSString *processedFilePath = [NSString stringWithFormat:@"%@/%@", @"/Users/jaychae/.Trash", [unprocessedFile fileName]];
+    [processedFile setCurrentPath:processedFilePath];
     [processedFileStack pushObject:processedFile];
 }
 
@@ -72,6 +72,26 @@
 }
 
 - (void)undoPreviousAction {
+    if ([unprocessedFileStack stackCount] <= 0)
+        return;
+    
+    SWProcessedFile *processedFile = (SWProcessedFile *)[processedFileStack popHead];
+    SWUnProcessedFile *unprocessedFile;
+    NSString *processedAction = [processedFile processedAction];
+    
+    if ([processedAction isEqualToString:@"Remove"]) {
+        NSString *currentPath = [processedFile currentPath];
+        NSString *destinationPath = [processedFile pathProcessedFrom];
+        unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
+        [unprocessedFile setFileIcon:[workspace iconForFile:destinationPath]];
+        [unprocessedFileStack pushObject:unprocessedFile];
+       
+        NSError *error;
+        [[NSFileManager defaultManager] moveItemAtPath:currentPath toPath:destinationPath error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    }
 }
 
 @end

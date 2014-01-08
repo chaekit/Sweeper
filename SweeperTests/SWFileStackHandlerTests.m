@@ -96,5 +96,20 @@
     XCTAssertTrue([processedFile.processedAction isEqualToString:@"Defer"], @"Deferred file should have 'Defer' as its processedAction");
 }
 
+- (void)testUndoPreviousAction {
+    NSInteger previousUnprocessedCount = [stackHandler.unprocessedFileStack stackCount];
+    NSInteger previousProcessedCount = [stackHandler.processedFileStack stackCount];
+   
+    [stackHandler removeHeadFile];
+    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1.0, true);
+    [stackHandler undoPreviousAction];
+    
+    NSInteger newUnprocessedCount = [stackHandler.unprocessedFileStack stackCount];
+    NSInteger newProcessedCount = [stackHandler.processedFileStack stackCount];
+
+    XCTAssertTrue(newUnprocessedCount == previousUnprocessedCount, @"The count of unprocessedCount should remain same after undoing remove action");
+    XCTAssertTrue(newProcessedCount == previousProcessedCount, @"The count of processedCount should remain same after undoing remove action");
+}
+
 
 @end
