@@ -47,8 +47,6 @@
         [self _initDataStorage];
         [self _initDirectoriesInUserHomeDirectory];
         self.initialized = YES;
-//        [self hideSearchBar];
-//        [directorySearchTableView setAlphaValue:0.0];
     }
 }
 
@@ -67,6 +65,8 @@
         [self showSearchBar];
     } else if ([keyCharacter isEqualToString:@"x"]) {
         NSLog(@"delete file");
+        [fileStackHandler removeHeadFile];
+        [fileTableView reloadData];
     } else if ([keyCharacter isEqualToString:@"l"]) {
         NSLog(@"defer file");
     } else if ([keyCharacter isEqualToString:@"z"]) {
