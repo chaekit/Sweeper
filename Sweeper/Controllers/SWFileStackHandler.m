@@ -60,8 +60,21 @@
     [processedFileStack pushObject:processedFile];
 }
 
-- (void)moveHeadFileToDirectoryAtPath:(NSString *)aURLString {
+- (void)moveHeadFileToDirectoryAtPath:(NSString *)aPathString {
+    SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
+    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Move"];
     
+    [processedFile setCurrentPath:aPathString];
+    [processedFileStack pushObject:processedFile];
+   
+    NSString *currentPath = [unprocessedFile filePath];
+    NSString *destinationPath = [NSString stringWithFormat:@"%@/%@", aPathString, [unprocessedFile fileName]];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] moveItemAtPath:currentPath toPath:destinationPath error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
 }
 
 - (void)deferHeadFile {

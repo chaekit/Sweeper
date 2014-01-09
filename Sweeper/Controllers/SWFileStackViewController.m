@@ -65,10 +65,10 @@
         [self showSearchBar];
     } else if ([keyCharacter isEqualToString:@"x"]) {
         NSLog(@"delete file");
-        [fileStackHandler removeHeadFile];
-        [fileTableView reloadData];
+        [self deleteFile];
     } else if ([keyCharacter isEqualToString:@"l"]) {
         NSLog(@"defer file");
+        [self skipFile];
     } else if ([keyCharacter isEqualToString:@"z"]) {
         [fileStackHandler undoPreviousAction];
         [fileTableView reloadData];
@@ -81,14 +81,37 @@
     if ([keyCharacter isEqualToString:@"\r"]) {
         if ([directorySearchTableView selectedRow] > -1) {
             NSURL *url = [directorySearchResult objectAtIndex:[directorySearchTableView selectedRow]];
-            NSLog(@"%@ url bitch", url);
+            [self moveFileTo:[url path]];
         }
     }
+}
+
+#pragma mark -
+#pragma actions
+
+- (void)moveFileTo:(NSString *)destinationPath {
+    [fileStackHandler moveHeadFileToDirectoryAtPath:destinationPath];
+    [fileTableView reloadData];
+    [self hideSearchBar];
+    [self resetSearchBarText];
+}
+
+- (void)deleteFile {
+    [fileStackHandler removeHeadFile];
+    [fileTableView reloadData];
+}
+
+- (void)skipFile {
+    [fileStackHandler deferHeadFile];
+    [fileTableView reloadData];
 }
 
 - (void)cancelOperation:(id)sender {
     [self hideSearchBar];
 }
+
+#pragma mark -
+#pragma initializations
 
 - (void)_initDataStorage {
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Documents"]; // Harcoded URL for dev
@@ -127,6 +150,11 @@
     [fileTableViewContainer setAlphaValue:1.0];
     [directorySearchTableViewContainer setAlphaValue:0.0];
 }
+
+- (void)resetSearchBarText {
+    [directorySearchBar setStringValue:@""];
+}
+
 
 
 #pragma mark -

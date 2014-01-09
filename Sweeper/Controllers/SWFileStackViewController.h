@@ -23,5 +23,13 @@
 
 - (void)showSearchBar;
 - (void)hideSearchBar;
+- (void)resetSearchBarText;
+
+/*
+ file actions
+ */
+- (void)deleteFile;
+- (void)moveFileTo:(NSString *)destinationPath;
+- (void)skipFile;
 
 @end
