@@ -108,6 +108,8 @@
 
 - (void)cancelOperation:(id)sender {
     [self hideSearchBar];
+    [self resetSearchBarText];
+    [directorySearchBar resignFirstResponder];
 }
 
 #pragma mark -
@@ -140,9 +142,14 @@
     NSLog(@"%@", self);
 }
 
+#pragma mark -
+#pragma UI actions
+
+
 - (void)showSearchBar {
     [fileTableViewContainer setFrame:NSMakeRect(0, -67, 616, 464)];
     [fileTableViewContainer setAlphaValue:0.0];
+    [[self window] makeFirstResponder:directorySearchBar];
 }
 
 - (void)hideSearchBar {
