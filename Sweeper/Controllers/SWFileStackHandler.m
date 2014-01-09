@@ -64,14 +64,13 @@
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Move"];
     
-    [processedFile setCurrentPath:aPathString];
-    [processedFileStack pushObject:processedFile];
    
-    NSString *currentPath = [unprocessedFile filePath];
+//    NSString *currentPath = [NSString stringWithFormat:@"%@/%@", aPathString, unprocessedFile]
     NSString *destinationPath = [NSString stringWithFormat:@"%@/%@", aPathString, [unprocessedFile fileName]];
-    
+    [processedFile setCurrentPath:destinationPath];
+    [processedFileStack pushObject:processedFile];
     NSError *error;
-    [[NSFileManager defaultManager] moveItemAtPath:currentPath toPath:destinationPath error:&error];
+    [[NSFileManager defaultManager] moveItemAtPath:[unprocessedFile filePath] toPath:destinationPath error:&error];
     if (error) {
         NSLog(@"%@", [error localizedDescription]);
     }
@@ -96,7 +95,19 @@
         NSString *currentPath = [processedFile currentPath];
         NSString *destinationPath = [processedFile pathProcessedFrom];
         unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
-        [unprocessedFile setFileIcon:[workspace iconForFile:destinationPath]];
+        [unprocessedFile setFileIcon:[workspace iconForFile:currentPath]];
+        [unprocessedFileStack pushObject:unprocessedFile];
+       
+        NSError *error;
+        [[NSFileManager defaultManager] moveItemAtPath:currentPath toPath:destinationPath error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    } else if ([processedAction isEqualToString:@"Move"]) {
+        NSString *currentPath = [processedFile currentPath];
+        NSString *destinationPath = [processedFile pathProcessedFrom];
+        unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
+        [unprocessedFile setFileIcon:[workspace iconForFile:currentPath]];
         [unprocessedFileStack pushObject:unprocessedFile];
        
         NSError *error;

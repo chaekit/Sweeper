@@ -221,11 +221,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackHandler.m"
-            timestampString = "410939158.462339"
+            timestampString = "410941435.011928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-undoPreviousAction"
             landmarkType = "5">
             <Locations>
@@ -299,12 +299,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackHandler.m"
-            timestampString = "410939909.081043"
+            timestampString = "410941435.011928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-moveHeadFileToDirectoryAtPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sweeper/Controllers/SWFileStackHandler.m"
+            timestampString = "410941435.011928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-undoPreviousAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sweeper/Controllers/SWFileStackHandler.m"
+            timestampString = "410941435.011928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-undoPreviousAction"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
