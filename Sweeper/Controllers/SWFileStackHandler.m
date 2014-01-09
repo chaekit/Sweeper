@@ -115,6 +115,11 @@
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
+    } else if ([processedAction isEqualToString:@"Defer"]) {
+        NSString *currentPath = [processedFile currentPath];
+        unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
+        [unprocessedFile setFileIcon:[workspace iconForFile:currentPath]];
+        [unprocessedFileStack pushObject:unprocessedFile];
     }
 }
 
