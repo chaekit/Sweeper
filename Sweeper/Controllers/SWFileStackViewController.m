@@ -86,6 +86,7 @@
     }
 }
 
+
 #pragma mark -
 #pragma actions
 
@@ -116,7 +117,8 @@
 #pragma initializations
 
 - (void)_initDataStorage {
-    fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Documents"]; // Harcoded URL for dev
+    NSString *directoryPath = [NSString stringWithFormat:@"/Users/%@/Dropbox", [self systemUserName]];
+    fileStackHandler = [SWFileStackHandler stackHandlerForURL:directoryPath];
 }
 
 - (void)_initDirectoriesInUserHomeDirectory {
@@ -140,6 +142,14 @@
         }
     }
     NSLog(@"%@", self);
+}
+
+- (NSString *)systemUserName {
+    NSURL *documentDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSAllDomainsMask] lastObject];
+    NSArray *components = [documentDirectory pathComponents];
+    NSInteger componentSize = [components count];
+    NSString *userName = components[componentSize - 2];
+    return userName;
 }
 
 #pragma mark -

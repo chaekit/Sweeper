@@ -31,11 +31,16 @@
 
 - (void)setUp {
     [super setUp];
+//    NSLog(@"%@ ---------------------------------------------------------------------------------------", [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSAllDomainsMask]);
     stackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Documents"];
 }
 
 - (void)tearDown {
     [super tearDown];
+}
+
+- (void)testSystemUserName {
+    stackHandler syste
 }
 
 - (void)testHasBothStacksAfterInitialization {

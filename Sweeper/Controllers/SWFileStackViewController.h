@@ -21,6 +21,8 @@
 @property (nonatomic, retain) NSMutableArray *directoriesInUserHomeDirectory;
 
 
+- (NSString *)systemUserName;
+
 - (void)showSearchBar;
 - (void)hideSearchBar;
 - (void)resetSearchBarText;
