@@ -34,19 +34,23 @@
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
     if (self) {
-        [self _initDataStorage];
         [self _initDirectoriesInUserHomeDirectory];
+        [NSApp setServicesProvider:self];
+        NSUpdateDynamicServices();
         [fileTableView setAllowsTypeSelect:NO];
         self.initialized = NO;
+        NSLog(@"initialized with frame");
     }
     return self;
 }
 
 - (void)awakeFromNib {
     if (!self.initialized) {
-        [self _initDataStorage];
         [self _initDirectoriesInUserHomeDirectory];
+        [NSApp setServicesProvider:self];
+        NSUpdateDynamicServices();
         self.initialized = YES;
+        NSLog(@"awaken from nib");
     }
 }
 
@@ -55,7 +59,6 @@
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
-  
     /*
      Actions for responding to file action events
      */
@@ -90,6 +93,13 @@
 #pragma mark -
 #pragma actions
 
+- (void)fuckServices:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error {
+    NSString *fileURL = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
+    NSLog(@"fileURL bitches  %@", fileURL);
+    [self initDataStorageWithPath:fileURL];
+    [fileTableView reloadData];
+}
+
 - (void)moveFileTo:(NSString *)destinationPath {
     [fileStackHandler moveHeadFileToDirectoryAtPath:destinationPath];
     [fileTableView reloadData];
@@ -116,10 +126,14 @@
 #pragma mark -
 #pragma initializations
 
-- (void)_initDataStorage {
-    NSString *directoryPath = [NSString stringWithFormat:@"/Users/%@/Dropbox", [self systemUserName]];
-    fileStackHandler = [SWFileStackHandler stackHandlerForURL:directoryPath];
+
+- (void)initDataStorageWithPath:(NSString *)path {
+    fileStackHandler = [SWFileStackHandler stackHandlerForURL:path];
 }
+
+/*
+ Initialize the app using Services
+ */
 
 - (void)_initDirectoriesInUserHomeDirectory {
     NSFileManager *fileManager = [[NSFileManager alloc] init];

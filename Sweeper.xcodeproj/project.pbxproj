@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190953F21876BD0C00943549 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
 		190953F31876BD0C00943549 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
 		190953F61876BD6600943549 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
 		190953F81876BD9C00943549 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
@@ -110,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190953F21876BD0C00943549 /* OCMock.framework in Frameworks */,
 				19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,8 +493,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jaychae/Developers/Personal/Sweeper,
-					/Users/jaychae/Developers/Personal/Sweeper/Frameworks,
-					"/Volumes/OCMock\\ 2.2.2/OSX",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
@@ -516,7 +512,6 @@
 					"$(inherited)",
 					/Users/jaychae/Developers/Personal/Sweeper,
 					/Users/jaychae/Developers/Personal/Sweeper/Frameworks,
-					"/Volumes/OCMock\\ 2.2.2/OSX",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";

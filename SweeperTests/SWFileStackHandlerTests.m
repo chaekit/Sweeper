@@ -39,9 +39,6 @@
     [super tearDown];
 }
 
-- (void)testSystemUserName {
-    stackHandler syste
-}
 
 - (void)testHasBothStacksAfterInitialization {
     BOOL respondsToProcessedStack = [stackHandler respondsToSelector:@selector(processedFileStack)];

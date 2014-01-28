@@ -30,5 +30,30 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Sort with Sweeper</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>fuckServices</string>
+			<key>NSPortName</key>
+			<string>Sweeper</string>
+			<key>NSRequiredContext</key>
+			<dict>
+				<key>NSApplicationIdentifier</key>
+				<string>com.apple.finder</string>
+			</dict>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSURLPboardType</string>
+				<string>NSFilenamesPboardType</string>
+				<string>NSStringPboardType</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
