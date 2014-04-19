@@ -33,6 +33,7 @@
 		19ACB3BA18764E4700168B38 /* SWFileStackHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */; };
 		19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
 		19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
+		19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWFileStackHandlerTests.m; sourceTree = "<group>"; };
 		19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackViewController.h; path = Controllers/SWFileStackViewController.h; sourceTree = "<group>"; };
 		19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackViewController.m; path = Controllers/SWFileStackViewController.m; sourceTree = "<group>"; };
+		19B94DEA18ED0C7D00C7436F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */,
 				19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +151,7 @@
 		19738E4C1875A6D900461F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19B94DEA18ED0C7D00C7436F /* QuickLook.framework */,
 				190953F11876BD0C00943549 /* OCMock.framework */,
 				19738E4D1875A6D900461F96 /* Cocoa.framework */,
 				19738E6C1875A6D900461F96 /* XCTest.framework */,
