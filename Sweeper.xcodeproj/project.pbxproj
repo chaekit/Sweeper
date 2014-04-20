@@ -34,6 +34,7 @@
 		19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
 		19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
 		19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
+		19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackViewController.h; path = Controllers/SWFileStackViewController.h; sourceTree = "<group>"; };
 		19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackViewController.m; path = Controllers/SWFileStackViewController.m; sourceTree = "<group>"; };
 		19B94DEA18ED0C7D00C7436F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		19DDBF8419037E3E000DADAC /* NSURL+Sweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Sweeper.h"; path = "Models/NSURL+Sweeper.h"; sourceTree = "<group>"; };
+		19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Sweeper.m"; path = "Models/NSURL+Sweeper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +228,8 @@
 				19ACB3B218764B7C00168B38 /* SWFileStack.m */,
 				19487F2B1876A9A2003B637B /* SWProcessedFile.h */,
 				19487F2C1876A9A2003B637B /* SWProcessedFile.m */,
+				19DDBF8419037E3E000DADAC /* NSURL+Sweeper.h */,
+				19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 			files = (
 				19ACB3B318764B7C00168B38 /* SWFileStack.m in Sources */,
 				19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
+				19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */,
 				19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */,
 				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
 				19487F2D1876A9A2003B637B /* SWProcessedFile.m in Sources */,

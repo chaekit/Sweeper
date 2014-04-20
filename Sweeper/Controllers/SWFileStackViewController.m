@@ -12,6 +12,7 @@
 #import "SWUnProcessedFile.h"
 #import "SWAppDelegate.h"
 #import "SWDirectorySearchCellView.h"
+#import "NSURL+Sweeper.h"
 
 @interface SWFileStackViewController ()
 
@@ -51,6 +52,10 @@
         NSUpdateDynamicServices();
         self.initialized = YES;
         NSLog(@"awaken from nib");
+        
+#ifdef DEBUG
+        [self fuckServices:nil userData:nil error:nil];
+#endif
     }
 }
 
@@ -128,8 +133,13 @@
 
 
 - (void)initDataStorageWithPath:(NSString *)path {
+#ifdef RELEASE
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:path];
+#else
+    fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Desktop"];
+#endif
 }
+
 
 /*
  Initialize the app using Services
@@ -221,6 +231,7 @@
             NSString *fullPath = [directoryURL path];
             NSString *directoryName = [fullPath lastPathComponent];
             NSImage *iconImage = [workspace iconForFile:fullPath];
+            [iconImage setSize:NSMakeSize(64.0, 64.0)];
            
             [cellView.fullPathTextField setStringValue:fullPath];
             [cellView.nameTextField setStringValue:directoryName];
@@ -244,6 +255,8 @@
         NSRange range;
         range.location = 0;
         range.length = 10;
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"depthOfURLByPathComponents" ascending:YES];
+        directorySearchResult = [directorySearchResult sortedArrayUsingDescriptors:@[sortDescriptor]];
         directorySearchResult = [directorySearchResult subarrayWithRange:range];
     }
     

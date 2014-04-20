@@ -45,11 +45,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "-controlTextDidChange:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sweeper/Controllers/SWFileStackViewController.m"
+            timestampString = "419659423.085826"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "-tableView:viewForTableColumn:row:"
             landmarkType = "5">
          </BreakpointContent>
@@ -61,7 +77,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
@@ -77,55 +93,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "-numberOfRowsInTableView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "-numberOfRowsInTableView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-resetSearchBarText"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
@@ -141,11 +109,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "-numberOfRowsInTableView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sweeper/Controllers/SWFileStackViewController.m"
+            timestampString = "419659423.085826"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-tableView:viewForTableColumn:row:"
             landmarkType = "5">
          </BreakpointContent>
@@ -157,11 +141,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-tableView:viewForTableColumn:row:"
             landmarkType = "5">
          </BreakpointContent>
@@ -173,11 +157,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "-tableView:viewForTableColumn:row:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sweeper/Controllers/SWFileStackViewController.m"
+            timestampString = "419659423.085826"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "-controlTextDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -299,13 +299,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweeper/Controllers/SWFileStackViewController.m"
-            timestampString = "418188164.511312"
+            timestampString = "419659423.085826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "-cancelOperation:"
-            landmarkType = "5">
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "@implementation SWFileStackViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

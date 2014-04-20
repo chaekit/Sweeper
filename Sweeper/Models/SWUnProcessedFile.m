@@ -23,7 +23,8 @@
 }
 
 + (instancetype)unprocessedFileAtPath:(NSString *)path {
-    NSString *fileName = [[path componentsSeparatedByString:@"/"] lastObject];
+    NSArray *pathComponents = [path componentsSeparatedByString:@"/"];
+    NSString *fileName = [pathComponents lastObject];
     
     SWUnProcessedFile *unprocessedFile = [[SWUnProcessedFile alloc] init];
     [unprocessedFile setFilePath:path];
@@ -33,7 +34,9 @@
     
     if (iconImageRef == NULL) {
         NSWorkspace *workspace = [[NSWorkspace alloc] init];
-        [unprocessedFile setFileIcon:[workspace iconForFile:path]];
+        NSImage *icon = [workspace iconForFile:path];
+        [icon setSize:NSMakeSize(128.0, 128.0)];
+        [unprocessedFile setFileIcon:icon];
     } else {
         NSImage *icon = [[NSImage alloc] initWithCGImage:iconImageRef size:NSMakeSize(64, 64)];
         [unprocessedFile setFileIcon:icon];
