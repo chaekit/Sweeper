@@ -73,8 +73,11 @@ static void initialize_fileTableView_frames() {
 - (void)awakeFromNib {
     if (!self.initialized) {
         [self _initDirectoriesInUserHomeDirectory];
+#ifdef RELEASE
         [NSApp setServicesProvider:self];
         NSUpdateDynamicServices();
+        NSLog(@"release build");
+#endif
         self.initialized = YES;
         NSLog(@"awaken from nib");
         
