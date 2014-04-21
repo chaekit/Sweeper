@@ -25,7 +25,6 @@
 
 - (void)showSearchBar;
 - (void)hideSearchBar;
-- (void)resetSearchBarText;
 
 /*
  file actions
