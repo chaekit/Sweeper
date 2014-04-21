@@ -782,7 +782,7 @@
                                                             <rect key="frame" x="147" y="17" width="588" height="29"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="071-Gh-hJt">
-                                                                <font key="font" metaFont="system" size="18"/>
+                                                                <font key="font" size="30" name="HelveticaNeue-UltraLight"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -791,7 +791,7 @@
                                                             <rect key="frame" x="147" y="-19" width="424" height="28"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="BxE-Sh-7HH">
-                                                                <font key="font" size="13" name="Helvetica"/>
+                                                                <font key="font" size="13" name="HelveticaNeue"/>
                                                                 <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
