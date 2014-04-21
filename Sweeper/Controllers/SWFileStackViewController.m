@@ -73,6 +73,7 @@ static void initialize_fileTableView_frames() {
 - (void)awakeFromNib {
     if (!self.initialized) {
         [self _initDirectoriesInUserHomeDirectory];
+        [directorySearchBar setFocusRingType:NSFocusRingTypeNone];
 #ifdef RELEASE
         [NSApp setServicesProvider:self];
         NSUpdateDynamicServices();
