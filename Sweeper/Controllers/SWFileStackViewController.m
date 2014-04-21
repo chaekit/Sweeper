@@ -14,6 +14,31 @@
 #import "SWDirectorySearchCellView.h"
 #import "NSURL+Sweeper.h"
 
+static CGFloat const SEARCHBAR_ANIMATION_DURATION = 0.3;
+static NSTableViewAnimationOptions const FILETABLEVIEW_ROW_ANIMATION_OPTION = NSTableViewAnimationEffectGap;
+
+static NSColor *colorForDeleteFileAnimation;
+static NSColor *colorForMoveFileAnimation;
+static NSColor *colorForSkipFileAnimation;
+static NSColor *colorForUndoFileAnimation;
+
+static NSRect frameOfVisibleFileTableView;
+static NSRect frameOfHiddenFileTableView;
+
+__attribute__((constructor))
+static void initialize_fileTableView_animation_colors() {
+    colorForSkipFileAnimation = [NSColor colorWithRed:0.839 green:0.839 blue:0.439 alpha:1.0]; // #d6d670
+    colorForMoveFileAnimation = [NSColor colorWithRed:0.639 green:0.839 blue:0.439 alpha:1.0]; // #a3d670
+    colorForDeleteFileAnimation = [NSColor colorWithRed:0.839 green:0.439 blue:0.439 alpha:1.0]; // #d67070
+}
+
+
+__attribute__((constructor))
+static void initialize_fileTableView_frames() {
+    frameOfHiddenFileTableView = NSMakeRect(0, -67, 616, 464);
+    frameOfVisibleFileTableView = NSMakeRect(0, -3, 616, 464);
+}
+
 @interface SWFileStackViewController ()
 
 @property (nonatomic, strong) NSArray *directorySearchResult;
@@ -107,25 +132,28 @@
 
 - (void)moveFileTo:(NSString *)destinationPath {
     [fileStackHandler moveHeadFileToDirectoryAtPath:destinationPath];
-    [fileTableView reloadData];
+    NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
+    [cellAtTop setBackgroundColor:colorForMoveFileAnimation];
+    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:FILETABLEVIEW_ROW_ANIMATION_OPTION];
     [self hideSearchBar];
-    [self resetSearchBarText];
 }
 
 - (void)deleteFile {
     [fileStackHandler removeHeadFile];
-    [fileTableView reloadData];
+    NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
+    [cellAtTop setBackgroundColor:colorForDeleteFileAnimation];
+    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:FILETABLEVIEW_ROW_ANIMATION_OPTION];
 }
 
 - (void)skipFile {
     [fileStackHandler deferHeadFile];
-    [fileTableView reloadData];
+    NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
+    [cellAtTop setBackgroundColor:colorForSkipFileAnimation];
+    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:FILETABLEVIEW_ROW_ANIMATION_OPTION];
 }
 
 - (void)cancelOperation:(id)sender {
     [self hideSearchBar];
-    [self resetSearchBarText];
-    [directorySearchBar resignFirstResponder];
 }
 
 #pragma mark -
@@ -181,21 +209,26 @@
 
 
 - (void)showSearchBar {
-    [fileTableViewContainer setFrame:NSMakeRect(0, -67, 616, 464)];
-    [fileTableViewContainer setAlphaValue:0.0];
     [[self window] makeFirstResponder:directorySearchBar];
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [context setDuration:SEARCHBAR_ANIMATION_DURATION];
+        [[fileTableViewContainer animator] setFrame:NSMakeRect(0, -67, 616, 464)];
+        [[fileTableViewContainer animator] setAlphaValue:0.0];
+        
+    } completionHandler:nil];
 }
 
 - (void)hideSearchBar {
-    [fileTableViewContainer setFrame:NSMakeRect(0, -3, 616, 464)];
-    [fileTableViewContainer setAlphaValue:1.0];
-    [directorySearchTableViewContainer setAlphaValue:0.0];
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        [context setDuration:SEARCHBAR_ANIMATION_DURATION];
+        [[fileTableViewContainer animator] setFrame:NSMakeRect(0, -3, 616, 464)];
+        [fileTableViewContainer setAlphaValue:1.0];
+        [directorySearchTableViewContainer setAlphaValue:0.0];
+    } completionHandler:^{
+        [directorySearchBar setStringValue:@""];
+        [directorySearchBar resignFirstResponder];
+    }];
 }
-
-- (void)resetSearchBarText {
-    [directorySearchBar setStringValue:@""];
-}
-
 
 
 #pragma mark -
