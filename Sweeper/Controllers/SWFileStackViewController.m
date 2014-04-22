@@ -73,7 +73,9 @@ static void initialize_fileTableView_frames() {
 - (void)awakeFromNib {
     if (!self.initialized) {
         [self _initDirectoriesInUserHomeDirectory];
+        [self.window makeFirstResponder:fileTableView];
         [directorySearchBar setFocusRingType:NSFocusRingTypeNone];
+        [directorySearchBar setEnabled:NO];
 #ifdef RELEASE
         [NSApp setServicesProvider:self];
         NSUpdateDynamicServices();
@@ -129,6 +131,9 @@ static void initialize_fileTableView_frames() {
 
 - (void)fuckServices:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error {
     NSString *fileURL = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
+#ifdef DEBUG
+    fileURL = @"/Users/jaychae/Desktop";
+#endif
     NSLog(@"fileURL bitches  %@", fileURL);
     [self initDataStorageWithPath:fileURL];
     [fileTableView reloadData];
@@ -213,6 +218,7 @@ static void initialize_fileTableView_frames() {
 
 
 - (void)showSearchBar {
+    [directorySearchBar setEnabled:YES];
     [[self window] makeFirstResponder:directorySearchBar];
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         [context setDuration:SEARCHBAR_ANIMATION_DURATION];
@@ -231,6 +237,8 @@ static void initialize_fileTableView_frames() {
     } completionHandler:^{
         [directorySearchBar setStringValue:@""];
         [directorySearchBar resignFirstResponder];
+        [directorySearchBar setEnabled:NO];
+        [self.window makeFirstResponder:fileTableView];
     }];
 }
 
