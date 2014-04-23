@@ -43,6 +43,7 @@ static void initialize_fileTableView_frames() {
 
 @property (nonatomic, strong) NSArray *directorySearchResult;
 @property (nonatomic) BOOL initialized;
+@property (nonatomic, assign) NSUInteger selectedRowIndex;
 
 @end
 
@@ -56,6 +57,7 @@ static void initialize_fileTableView_frames() {
 @synthesize directorySearchResult;
 @synthesize directorySearchTableViewContainer;
 @synthesize fileTableViewContainer;
+@synthesize selectedRowIndex;
 
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
@@ -73,7 +75,6 @@ static void initialize_fileTableView_frames() {
 - (void)awakeFromNib {
     if (!self.initialized) {
         [self _initDirectoriesInUserHomeDirectory];
-        [self.window makeFirstResponder:fileTableView];
         [directorySearchBar setFocusRingType:NSFocusRingTypeNone];
         [directorySearchBar setEnabled:NO];
 #ifdef RELEASE
@@ -87,6 +88,8 @@ static void initialize_fileTableView_frames() {
 #ifdef DEBUG
         [self fuckServices:nil userData:nil error:nil];
 #endif
+        
+        [self.window makeFirstResponder:fileTableView];
     }
 }
 
@@ -95,6 +98,9 @@ static void initialize_fileTableView_frames() {
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
+    if ([[[self window] firstResponder] isEqualTo:directorySearchTableView]) {
+        return;
+    }
     /*
      Actions for responding to file action events
      */
@@ -218,13 +224,13 @@ static void initialize_fileTableView_frames() {
 
 
 - (void)showSearchBar {
+    [self setSelectedRowIndex:0];
     [directorySearchBar setEnabled:YES];
     [[self window] makeFirstResponder:directorySearchBar];
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         [context setDuration:SEARCHBAR_ANIMATION_DURATION];
         [[fileTableViewContainer animator] setFrame:NSMakeRect(0, -67, 616, 464)];
         [[fileTableViewContainer animator] setAlphaValue:0.0];
-        
     } completionHandler:nil];
 }
 
@@ -311,6 +317,34 @@ static void initialize_fileTableView_frames() {
         [directorySearchTableViewContainer setAlphaValue:0.0];
     }
     [directorySearchTableView reloadData];
+    [self setSelectedRowIndex:0];
+    [directorySearchTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRowIndex] byExtendingSelection:NO];
+}
+
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+    if (![control isEqualTo:directorySearchBar]) {
+        return NO;
+    }
+    
+    NSLog(@"%@", NSStringFromSelector(commandSelector));
+    if ([NSStringFromSelector(commandSelector) isEqualToString:@"moveDown:"]) {
+        NSInteger adjustedSelectedRowIndex = (++selectedRowIndex) % [directorySearchResult count];
+        [directorySearchTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:adjustedSelectedRowIndex] byExtendingSelection:NO];
+    }
+   
+    if ([NSStringFromSelector(commandSelector) isEqualToString:@"moveUp:"]) {
+        NSInteger adjustedSelectedRowIndex = (--selectedRowIndex) % [directorySearchResult count];
+        [directorySearchTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:adjustedSelectedRowIndex] byExtendingSelection:NO];
+    }
+   
+    if ([NSStringFromSelector(commandSelector) isEqualToString:@"insertNewline:"]) {
+        if ([directorySearchTableView selectedRow] > -1) {
+            NSURL *url = [directorySearchResult objectAtIndex:[directorySearchTableView selectedRow]];
+            [self moveFileTo:[url path]];
+        }
+    }
+    
+    return NO;
 }
 
 @end
