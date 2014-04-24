@@ -15,7 +15,6 @@
 #import "NSURL+Sweeper.h"
 
 static CGFloat const SEARCHBAR_ANIMATION_DURATION = 0.3;
-static NSTableViewAnimationOptions const FILETABLEVIEW_ROW_ANIMATION_OPTION = NSTableViewAnimationEffectGap;
 
 static NSColor *colorForDeleteFileAnimation;
 static NSColor *colorForMoveFileAnimation;
@@ -115,8 +114,7 @@ static void initialize_fileTableView_frames() {
         NSLog(@"defer file");
         [self skipFile];
     } else if ([keyCharacter isEqualToString:@"z"]) {
-        [fileStackHandler undoPreviousAction];
-        [fileTableView reloadData];
+        [self undoFileAction];
         NSLog(@"undo action");
     }
     
@@ -149,7 +147,7 @@ static void initialize_fileTableView_frames() {
     [fileStackHandler moveHeadFileToDirectoryAtPath:destinationPath];
     NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
     [cellAtTop setBackgroundColor:colorForMoveFileAnimation];
-    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:FILETABLEVIEW_ROW_ANIMATION_OPTION];
+    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:(NSTableViewAnimationEffectFade | NSTableViewAnimationSlideUp)];
     [self hideSearchBar];
 }
 
@@ -157,14 +155,19 @@ static void initialize_fileTableView_frames() {
     [fileStackHandler removeHeadFile];
     NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
     [cellAtTop setBackgroundColor:colorForDeleteFileAnimation];
-    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:FILETABLEVIEW_ROW_ANIMATION_OPTION];
+    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:(NSTableViewAnimationEffectFade | NSTableViewAnimationSlideUp)];
 }
 
 - (void)skipFile {
     [fileStackHandler deferHeadFile];
-    NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
+    NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:YES];
     [cellAtTop setBackgroundColor:colorForSkipFileAnimation];
-    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:FILETABLEVIEW_ROW_ANIMATION_OPTION];
+    [fileTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:(NSTableViewAnimationEffectFade | NSTableViewAnimationSlideUp)];
+}
+
+- (void)undoFileAction {
+    [fileStackHandler undoPreviousAction];
+    [fileTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
 }
 
 - (void)cancelOperation:(id)sender {
