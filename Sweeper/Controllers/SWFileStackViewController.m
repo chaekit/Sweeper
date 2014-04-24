@@ -166,7 +166,11 @@ static void initialize_fileTableView_frames() {
 }
 
 - (void)undoFileAction {
-    [fileStackHandler undoPreviousAction];
+    NSError *error;
+    [fileStackHandler undoPreviousAction:&error];
+    
+    if (error)  return;
+    
     [fileTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
 }
 

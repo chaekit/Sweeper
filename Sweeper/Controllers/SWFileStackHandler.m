@@ -83,10 +83,14 @@
     [processedFileStack pushObject:processedFile];
 }
 
-- (void)undoPreviousAction {
-    if ([unprocessedFileStack stackCount] <= 0)
+- (void)undoPreviousAction:(NSError * __autoreleasing *)error {
+    if ([processedFileStack stackCount] <= 0) {
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain code:kCFURLErrorFileDoesNotExist userInfo:nil];
+        }
         return;
-    
+    }
+
     SWProcessedFile *processedFile = (SWProcessedFile *)[processedFileStack popHead];
     SWUnProcessedFile *unprocessedFile;
     NSString *processedAction = [processedFile processedAction];
