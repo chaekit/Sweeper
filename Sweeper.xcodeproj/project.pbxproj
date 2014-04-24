@@ -33,6 +33,7 @@
 		19ACB3BA18764E4700168B38 /* SWFileStackHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3B918764E4700168B38 /* SWFileStackHandlerTests.m */; };
 		19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
 		19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
+		19B1D4F01908BDEE00C6F57F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
 		19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
 		19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */; };
 /* End PBXBuildFile section */
@@ -123,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B1D4F01908BDEE00C6F57F /* QuickLook.framework in Frameworks */,
 				19738E6E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
 				190953F31876BD0C00943549 /* OCMock.framework in Frameworks */,
 				19738E6D1875A6D900461F96 /* XCTest.framework in Frameworks */,

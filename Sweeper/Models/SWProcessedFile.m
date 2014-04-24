@@ -26,6 +26,7 @@
     SWProcessedFile *processedFile = [[SWProcessedFile alloc] init];
     [processedFile setProcessedAction:action];
     [processedFile setPathProcessedFrom:[anUnprocessedFile filePath]];
+    [processedFile setFileIcon:[anUnprocessedFile fileIcon]];
     return processedFile;
 }
 //@property (nonatomic, strong) NSString *processedAction;

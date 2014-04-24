@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *processedAction;
 @property (nonatomic, strong) NSString *pathProcessedFrom;
 @property (nonatomic, strong) NSString *currentPath;
+@property (nonatomic, strong) NSImage *fileIcon;
 
 + (instancetype)processedFileFromUnprocessedFile:(SWUnProcessedFile *)anUnprocessedFile
                                           Action:(NSString *)action;
