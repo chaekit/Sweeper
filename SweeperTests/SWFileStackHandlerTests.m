@@ -104,13 +104,28 @@
    
     [stackHandler removeHeadFile];
     CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1.0, true);
-    [stackHandler undoPreviousAction];
+    [stackHandler undoPreviousAction:nil];
     
     NSInteger newUnprocessedCount = [stackHandler.unprocessedFileStack stackCount];
     NSInteger newProcessedCount = [stackHandler.processedFileStack stackCount];
 
     XCTAssertTrue(newUnprocessedCount == previousUnprocessedCount, @"The count of unprocessedCount should remain same after undoing remove action");
     XCTAssertTrue(newProcessedCount == previousProcessedCount, @"The count of processedCount should remain same after undoing remove action");
+}
+
+- (void)testUndoPreviousActionCreatesErrorOnEmptyUnprocessedFile {
+    id workspaceMock = [OCMockObject mockForClass:[NSWorkspace class]];
+    [[workspaceMock expect] recycleURLs:[OCMArg any] completionHandler:nil];
+    
+    id processedFileStackMock = [OCMockObject mockForClass:[SWFileStack class]];
+    NSInteger mockedValue = 0;
+    [[[processedFileStackMock stub] andReturnValue:[NSValue value:&mockedValue withObjCType:@encode(NSInteger)]] stackCount];
+    [stackHandler setProcessedFileStack:processedFileStackMock];
+    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1.0, true);
+    
+    NSError *error;
+    [stackHandler undoPreviousAction:&error];
+    XCTAssertNotNil(error, @"undoPreviousAction should set the error handler if processedFileStack is empty");
 }
 
 

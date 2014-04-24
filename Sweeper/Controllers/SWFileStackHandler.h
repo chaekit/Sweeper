@@ -21,6 +21,6 @@
 - (void)removeHeadFile;
 - (void)moveHeadFileToDirectoryAtPath:(NSString *)aURLString;
 - (void)deferHeadFile;
-- (void)undoPreviousAction;
+- (void)undoPreviousAction:(NSError * __autoreleasing *)error;
 
 @end
