@@ -1,1 +1,2 @@
-Check out the demo at https://vimeo.com/85083557
+
+![alt tag](https://raw.githubusercontent.com/wayfare/Sweeper/master/screenshots/Sweeper%20Demo%20GIF.gif)
