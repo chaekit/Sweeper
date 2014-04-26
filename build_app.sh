@@ -5,3 +5,4 @@ xcodebuild -exportArchive -exportFormat APP -archivePath ~/Desktop/Sweeper.xcarc
 
 rm -rf /Applications/Sweeper.app
 mv ~/Sweeper.app /Applications/Sweeper.app
+/System/Library/CoreServices/pbs -update
