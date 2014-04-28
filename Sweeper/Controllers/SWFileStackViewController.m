@@ -136,7 +136,7 @@ static void initialize_fileTableView_frames() {
 - (void)fuckServices:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error {
     NSString *fileURL = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
 #ifdef DEBUG
-    fileURL = @"/Users/jaychae/Desktop";
+    fileURL = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
 #endif
     NSLog(@"fileURL bitches  %@", fileURL);
     [self initDataStorageWithPath:fileURL];
@@ -186,7 +186,8 @@ static void initialize_fileTableView_frames() {
 #ifdef RELEASE
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:path];
 #else
-    fileStackHandler = [SWFileStackHandler stackHandlerForURL:@"/Users/jaychae/Desktop"];
+    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
+    fileStackHandler = [SWFileStackHandler stackHandlerForURL:pathToDesktop];
 #endif
 }
 
@@ -197,7 +198,7 @@ static void initialize_fileTableView_frames() {
 
 - (void)_initDirectoriesInUserHomeDirectory {
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    NSURL *userURL = [NSURL URLWithString:@"/Users/jaychae"];
+    NSURL *userURL = [NSURL URLWithString:NSHomeDirectory()];
     NSDirectoryEnumerator *directoryEnumerator = [fileManager enumeratorAtURL:userURL
                                                    includingPropertiesForKeys:@[NSURLIsDirectoryKey, NSURLNameKey]
                                                                       options:(NSDirectoryEnumerationSkipsHiddenFiles|NSDirectoryEnumerationSkipsPackageDescendants)

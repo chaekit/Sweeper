@@ -52,10 +52,9 @@
 - (void)removeHeadFile {
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     NSString *unprocessedFilePath = [unprocessedFile filePath];
-    NSLog(@"filePath  %@", unprocessedFilePath);
     [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]] completionHandler:nil];
     SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Remove"];
-    NSString *processedFilePath = [NSString stringWithFormat:@"%@/%@", @"/Users/jaychae/.Trash", [unprocessedFile fileName]];
+    NSString *processedFilePath = [NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), @".Trash", [unprocessedFile fileName]];
     [processedFile setCurrentPath:processedFilePath];
     [processedFileStack pushObject:processedFile];
 }
