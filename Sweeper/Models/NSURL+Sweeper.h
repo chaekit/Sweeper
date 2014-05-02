@@ -10,6 +10,10 @@
 
 @interface NSURL (Sweeper)
 
+/*
+ Returns the depth by counting the number of slashes "/" in a URL component.
+ More slashes = deeper
+ */
 - (NSUInteger)depthOfURLByPathComponents;
 
 @end

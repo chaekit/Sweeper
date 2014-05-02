@@ -30,9 +30,13 @@
     [unprocessedFile setFilePath:path];
     [unprocessedFile setFileName:fileName];
     
-    CGImageRef iconImageRef = QLThumbnailImageCreate(NULL, (__bridge CFURLRef)[NSURL fileURLWithPath:path], CGSizeMake(64, 64), (__bridge CFDictionaryRef)@{ (NSString*) kQLThumbnailOptionIconModeKey:@(YES)});
+    CGImageRef iconImageRef = QLThumbnailImageCreate(NULL,
+                                                     (__bridge CFURLRef)[NSURL fileURLWithPath:path],
+                                                     CGSizeMake(64, 64),
+                                                     (__bridge CFDictionaryRef)@{ (NSString*) kQLThumbnailOptionIconModeKey:@(YES)});
     
     if (iconImageRef == NULL) {
+        /* No image was found through QuickLook request. Gets a basic icon using an NSWorkspace object */
         NSWorkspace *workspace = [[NSWorkspace alloc] init];
         NSImage *icon = [workspace iconForFile:path];
         [icon setSize:NSMakeSize(128.0, 128.0)];
