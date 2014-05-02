@@ -19,16 +19,15 @@ static CGFloat const SEARCHBAR_ANIMATION_DURATION = 0.3;
 static NSColor *colorForDeleteFileAnimation;
 static NSColor *colorForMoveFileAnimation;
 static NSColor *colorForSkipFileAnimation;
-static NSColor *colorForUndoFileAnimation;
 
 static NSRect frameOfVisibleFileTableView;
 static NSRect frameOfHiddenFileTableView;
 
 __attribute__((constructor))
 static void initialize_fileTableView_animation_colors() {
-    colorForSkipFileAnimation = [NSColor colorWithRed:0.839 green:0.839 blue:0.439 alpha:1.0]; // #d6d670
-    colorForMoveFileAnimation = [NSColor colorWithRed:0.639 green:0.839 blue:0.439 alpha:1.0]; // #a3d670
-    colorForDeleteFileAnimation = [NSColor colorWithRed:0.839 green:0.439 blue:0.439 alpha:1.0]; // #d67070
+    colorForSkipFileAnimation = [NSColor colorWithRed:0.839 green:0.839 blue:0.439 alpha:1.0];      // #d6d670
+    colorForMoveFileAnimation = [NSColor colorWithRed:0.639 green:0.839 blue:0.439 alpha:1.0];      // #a3d670
+    colorForDeleteFileAnimation = [NSColor colorWithRed:0.839 green:0.439 blue:0.439 alpha:1.0];    // #d67070
 }
 
 
@@ -38,13 +37,17 @@ static void initialize_fileTableView_frames() {
     frameOfVisibleFileTableView = NSMakeRect(0, -3, 616, 464);
 }
 
+
 @interface SWFileStackViewController ()
 
 @property (nonatomic, strong) NSArray *directorySearchResult;
 @property (nonatomic) BOOL initialized;
 @property (nonatomic, assign) NSUInteger selectedRowIndex;
+@property (nonatomic, retain) NSMutableArray *directoriesInUserHomeDirectory;
 
+- (NSString *)systemUserName;
 @end
+
 
 @implementation SWFileStackViewController
 
@@ -57,6 +60,7 @@ static void initialize_fileTableView_frames() {
 @synthesize directorySearchTableViewContainer;
 @synthesize fileTableViewContainer;
 @synthesize selectedRowIndex;
+
 
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
@@ -83,11 +87,9 @@ static void initialize_fileTableView_frames() {
 #endif
         self.initialized = YES;
         NSLog(@"awaken from nib");
-        
 #ifdef DEBUG
         [self fuckServices:nil userData:nil error:nil];
 #endif
-        
         [self.window makeFirstResponder:fileTableView];
     }
 }
@@ -105,17 +107,25 @@ static void initialize_fileTableView_frames() {
      */
     NSString *keyCharacter = [theEvent characters];
     if ([keyCharacter isEqualToString:@"m"]) {
-        NSLog(@"move file");
+        /* 
+         move file. show directorySearchBar first for query.
+         */
         [self showSearchBar];
     } else if ([keyCharacter isEqualToString:@"x"]) {
-        NSLog(@"delete file");
+        /*
+         remove file
+         */
         [self deleteFile];
     } else if ([keyCharacter isEqualToString:@"l"]) {
-        NSLog(@"defer file");
+        /*
+         defer file
+         */
         [self skipFile];
     } else if ([keyCharacter isEqualToString:@"z"]) {
+        /*
+         undo file
+         */
         [self undoFileAction];
-        NSLog(@"undo action");
     }
     
     /*
@@ -131,14 +141,13 @@ static void initialize_fileTableView_frames() {
 
 
 #pragma mark -
-#pragma actions
+#pragma file actions
 
 - (void)fuckServices:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error {
     NSString *fileURL = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
 #ifdef DEBUG
     fileURL = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
 #endif
-    NSLog(@"fileURL bitches  %@", fileURL);
     [self initDataStorageWithPath:fileURL];
     [fileTableView reloadData];
 }
@@ -242,6 +251,7 @@ static void initialize_fileTableView_frames() {
     } completionHandler:nil];
 }
 
+
 - (void)hideSearchBar {
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         [context setDuration:SEARCHBAR_ANIMATION_DURATION];
@@ -268,6 +278,7 @@ static void initialize_fileTableView_frames() {
     }
     return 1;
 }
+
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if ([tableView isEqual:fileTableView]) {
@@ -328,6 +339,7 @@ static void initialize_fileTableView_frames() {
     [self setSelectedRowIndex:0];
     [directorySearchTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRowIndex] byExtendingSelection:NO];
 }
+
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
     if (![control isEqualTo:directorySearchBar]) {

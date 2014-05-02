@@ -12,17 +12,40 @@
 
 @interface SWFileStackViewController : NSView <NSTableViewDataSource, NSTableViewDelegate, NSTextFieldDelegate>
 
+
+/*
+ NSTableView that displays all the SWUnProcessedFiles in the folder
+ */
 @property (nonatomic, strong) IBOutlet NSTableView *fileTableView;
+
+/*
+ NSTableView that displays all query results of system wide directory search
+ */
 @property (nonatomic, strong) IBOutlet NSTableView *directorySearchTableView;
+
+/*
+ NSTextField where user can type in query for directory search.
+ */
 @property (nonatomic, strong) IBOutlet NSTextField *directorySearchBar;
+
+/*
+ Container for directorySearchTableViewContainer
+ */
 @property (nonatomic, strong) IBOutlet NSScrollView *directorySearchTableViewContainer;
+
+/*
+ Container for fileTableViewContainer
+ */
 @property (nonatomic, strong) IBOutlet NSScrollView *fileTableViewContainer;
+
+/*
+ SWFileStackViewController uses fileStackHandler to apply file operations on SWUnProcessedFiles
+ */
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
-@property (nonatomic, retain) NSMutableArray *directoriesInUserHomeDirectory;
 
-
-- (NSString *)systemUserName;
-
+/*
+ show or hide directorySearchBar
+ */
 - (void)showSearchBar;
 - (void)hideSearchBar;
 
