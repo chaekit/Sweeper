@@ -14,9 +14,9 @@
 /*
  Possible statuses of SWProcessedFile's 
  */
-extern NSString *SWFileStackHandlerProcessActionRemoved;
-extern NSString *SWFileStackHandlerProcessActionMoved;
-extern NSString *SWFileStackHandlerProcessActionDeferred;
+extern NSString * const SWFileStackHandlerProcessActionRemoved;
+extern NSString * const SWFileStackHandlerProcessActionMoved;
+extern NSString * const SWFileStackHandlerProcessActionDeferred;
 
 /*
  Class SWFileStackHandler

@@ -11,6 +11,11 @@
 #import "SWUnProcessedFile.h"
 #import "SWProcessedFile.h"
 
+
+NSString * const SWFileStackHandlerProcessActionRemoved = @"Remove";
+NSString * const SWFileStackHandlerProcessActionMoved = @"Move";
+NSString * const SWFileStackHandlerProcessActionDeferred = @"Defer";
+
 @interface SWFileStackHandler ()
 
 @property (nonatomic, strong) NSWorkspace *workspace;
@@ -53,7 +58,8 @@
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     NSString *unprocessedFilePath = [unprocessedFile filePath];
     [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]] completionHandler:nil];
-    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Remove"];
+    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
+                                                                                Action:SWFileStackHandlerProcessActionRemoved];
     NSString *processedFilePath = [NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), @".Trash", [unprocessedFile fileName]];
     [processedFile setCurrentPath:processedFilePath];
     [processedFileStack pushObject:processedFile];
@@ -61,10 +67,9 @@
 
 - (void)moveHeadFileToDirectoryAtPath:(NSString *)aPathString {
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
-    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Move"];
+    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
+                                                                                Action:SWFileStackHandlerProcessActionMoved];
     
-   
-//    NSString *currentPath = [NSString stringWithFormat:@"%@/%@", aPathString, unprocessedFile]
     NSString *destinationPath = [NSString stringWithFormat:@"%@/%@", aPathString, [unprocessedFile fileName]];
     [processedFile setCurrentPath:destinationPath];
     [processedFileStack pushObject:processedFile];
@@ -77,7 +82,8 @@
 
 - (void)deferHeadFile {
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
-    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile Action:@"Defer"];
+    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
+                                                                                Action:SWFileStackHandlerProcessActionDeferred];
     [processedFile setCurrentPath:@"Not Changed"];
     [processedFileStack pushObject:processedFile];
 }
@@ -94,7 +100,9 @@
     SWUnProcessedFile *unprocessedFile;
     NSString *processedAction = [processedFile processedAction];
     
-    if ([processedAction isEqualToString:@"Remove"]) {
+    if ([processedAction isEqualToString:SWFileStackHandlerProcessActionRemoved] ||
+        [processedAction isEqualToString:SWFileStackHandlerProcessActionMoved]) {
+        
         NSString *currentPath = [processedFile currentPath];
         NSString *destinationPath = [processedFile pathProcessedFrom];
         unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
@@ -105,18 +113,7 @@
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
-    } else if ([processedAction isEqualToString:@"Move"]) {
-        NSString *currentPath = [processedFile currentPath];
-        NSString *destinationPath = [processedFile pathProcessedFrom];
-        unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
-        [unprocessedFileStack pushObject:unprocessedFile];
-       
-        NSError *error;
-        [[NSFileManager defaultManager] moveItemAtPath:currentPath toPath:destinationPath error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-    } else if ([processedAction isEqualToString:@"Defer"]) {
+    } else if ([processedAction isEqualToString:SWFileStackHandlerProcessActionDeferred]) {
         unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
         [unprocessedFileStack pushObject:unprocessedFile];
     }
