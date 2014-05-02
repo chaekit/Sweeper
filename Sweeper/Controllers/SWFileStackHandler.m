@@ -33,15 +33,15 @@
     return self;
 }
 
-+ (instancetype)stackHandlerForURL:(NSString *)anURLString {
++ (instancetype)stackHandlerForURL:(NSString *)aURLString {
     SWFileStackHandler *handler = [[SWFileStackHandler alloc] init];
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSError *error;
    
     /* testing */
-    NSArray *contentsAtURL = [fileManager contentsOfDirectoryAtPath:anURLString error:&error];
+    NSArray *contentsAtURL = [fileManager contentsOfDirectoryAtPath:aURLString error:&error];
     for (NSString *fileName in contentsAtURL) {
-        NSString *fullFilePath = [NSString pathWithComponents:@[anURLString, fileName]];
+        NSString *fullFilePath = [NSString pathWithComponents:@[aURLString, fileName]];
         SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
         [handler.unprocessedFileStack pushObject:unprocessedFile];
     }

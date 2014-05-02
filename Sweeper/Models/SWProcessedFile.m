@@ -29,8 +29,5 @@
     [processedFile setFileIcon:[anUnprocessedFile fileIcon]];
     return processedFile;
 }
-//@property (nonatomic, strong) NSString *processedAction;
-//@property (nonatomic, strong) NSString *pathProcessedFrom;
-//@property (nonatomic, strong) NSString *currentPath;
 
 @end
