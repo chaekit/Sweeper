@@ -16,6 +16,8 @@ NSString * const SWFileStackHandlerProcessActionRemoved = @"Remove";
 NSString * const SWFileStackHandlerProcessActionMoved = @"Move";
 NSString * const SWFileStackHandlerProcessActionDeferred = @"Defer";
 
+static NSInteger remainingAsyncTaskCountGlobal;
+
 @interface SWFileStackHandler ()
 
 @property (nonatomic, strong) NSWorkspace *workspace;
@@ -42,15 +44,44 @@ NSString * const SWFileStackHandlerProcessActionDeferred = @"Defer";
     SWFileStackHandler *handler = [[SWFileStackHandler alloc] init];
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSError *error;
-   
-    /* testing */
     NSArray *contentsAtURL = [fileManager contentsOfDirectoryAtPath:aURLString error:&error];
+    
+    __block SWFileStack *temporaryUnprocessedFileStack = [[SWFileStack alloc] init];
+    __block NSInteger remainingAsyncTaskCount = [contentsAtURL count];
+   
+    /*
+     Fire an interrupt 5 seconds after the asyncloading starts. Assume that asyncloading went wrong
+     if the loading hasn't finished in 5 secs.
+     */
+    NSTimer *watchdogTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                              target:self
+                                                            selector:@selector(checkOnAsyncStackHandlerLoading:) userInfo:nil
+                                                             repeats:NO];
+    
     for (NSString *fileName in contentsAtURL) {
-        NSString *fullFilePath = [NSString pathWithComponents:@[aURLString, fileName]];
-        SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
-        [handler.unprocessedFileStack pushObject:unprocessedFile];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSString *fullFilePath = [NSString pathWithComponents:@[aURLString, fileName]];
+            SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
+            [temporaryUnprocessedFileStack pushObject:unprocessedFile];
+            remainingAsyncTaskCount--;
+            remainingAsyncTaskCountGlobal = remainingAsyncTaskCount;
+        });
     }
+   
+    while (remainingAsyncTaskCount > 0);
+    
+    [watchdogTimer invalidate];
+    [handler setUnprocessedFileStack:temporaryUnprocessedFileStack];
+    
+    NSLog(@"%ld remaining task", (long)remainingAsyncTaskCount);
+    NSLog(@"%ld@ remaining task", [temporaryUnprocessedFileStack stackCount]);
     return handler;
+}
+
+- (void)checkOnAsyncStackHandlerLoading:(NSTimer *)watchdogTimer {
+    if (remainingAsyncTaskCountGlobal > 0) {
+        [self.delegate stackHandlerFailedToLoad];
+    }
 }
 
 

@@ -38,7 +38,7 @@ static void initialize_fileTableView_frames() {
 }
 
 
-@interface SWFileStackViewController ()
+@interface SWFileStackViewController () <SWFileStackHandlerDelegate>
 
 @property (nonatomic, strong) NSArray *directorySearchResult;
 @property (nonatomic) BOOL initialized;
@@ -204,6 +204,7 @@ static void initialize_fileTableView_frames() {
 #else
     NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:pathToDesktop];
+    [fileStackHandler setDelegate:self];
 #endif
 }
 
@@ -271,6 +272,14 @@ static void initialize_fileTableView_frames() {
         [directorySearchBar setEnabled:NO];
         [self.window makeFirstResponder:fileTableView];
     }];
+}
+
+
+#pragma mark -
+#pragma SWFileStackHandlerDelegate
+
+- (void)stackHandlerFailedToLoad {
+    NSLog(@"stack handler failed to load");
 }
 
 

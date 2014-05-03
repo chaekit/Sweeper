@@ -11,6 +11,13 @@
 @class SWUnProcessedFile;
 @class SWFileStack;
 
+@protocol SWFileStackHandlerDelegate <NSObject>
+
+@optional
+- (void)stackHandlerFailedToLoad;
+
+@end
+
 /*
  Possible statuses of SWProcessedFile's 
  */
@@ -29,6 +36,11 @@ extern NSString * const SWFileStackHandlerProcessActionDeferred;
  Creates a handler for a given URL
  */
 + (instancetype)stackHandlerForURL:(NSString *)aURLString;
+
+/*
+ SWFileStackHandlerDelegate delegate
+ */
+@property (nonatomic, weak) id<SWFileStackHandlerDelegate> delegate;
 
 /*
  A SWFileStack of files that need to be processed.
