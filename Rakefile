@@ -1,9 +1,14 @@
 def build_app
   begin
     FileUtils.rm_r("#{Dir.home}/Desktop/Sweeper.app")
+  rescue Errno::ENOENT
+    puts "No Sweeper.app to remove in Desktop"
+  end
+
+  begin
     FileUtils.rm_r("#{Dir.home}/Desktop/Sweeper.xcarchive")
   rescue Errno::ENOENT
-    puts "No Sweeper.app or Sweeper.xcarchive to remove in Desktop"
+    puts "No Sweeper.xcarchive to remove in Desktop"
   end
 
   sh "xcodebuild -archivePath ~/Desktop/Sweeper -scheme Sweeper -configuration Release archive "
@@ -27,7 +32,8 @@ end
 
 def replace_old_app_with_new
   sh "rm -rf /Applications/Sweeper.app"
-  sh "mv ~/Desktop/Sweeper.app /Applications/Sweeper.app"
+  sh "mv #{Dir.home}/Desktop/Sweeper.app /Applications/Sweeper.app"
+  sh "rm -rf #{Dir.home}/Desktop/Sweeper.xcarchive"
 end
 
 def update_pasteboard_service

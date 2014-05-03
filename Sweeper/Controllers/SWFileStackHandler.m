@@ -64,11 +64,17 @@ static NSInteger remainingAsyncTaskCountGlobal;
             SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
             [temporaryUnprocessedFileStack pushObject:unprocessedFile];
             remainingAsyncTaskCount--;
-            remainingAsyncTaskCountGlobal = remainingAsyncTaskCount;
         });
     }
-   
-    while (remainingAsyncTaskCount > 0);
+
+    /*
+     Investigate why loop doesn't terminate when it is simply
+     ''while (remainingAsyncTaskCount > 0);''
+     Maybe the process has to update is register??
+     */
+    while (remainingAsyncTaskCount > 0) {
+        remainingAsyncTaskCountGlobal = remainingAsyncTaskCount;
+    }
     
     [watchdogTimer invalidate];
     [handler setUnprocessedFileStack:temporaryUnprocessedFileStack];

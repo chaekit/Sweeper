@@ -89,7 +89,6 @@ static void initialize_fileTableView_frames() {
 #ifdef DEBUG
         [self fuckServices:nil userData:nil error:nil];
 #endif
-        [self.window makeFirstResponder:fileTableView];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             [self _initDirectoriesInUserHomeDirectory];
@@ -151,12 +150,9 @@ static void initialize_fileTableView_frames() {
 #ifdef DEBUG
     fileURL = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
 #endif
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [self initDataStorageWithPath:fileURL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [fileTableView reloadData];
-        });
-    });
+    [self initDataStorageWithPath:fileURL];
+    [fileTableView reloadData];
+    [self.window makeFirstResponder:fileTableView];
 }
 
 - (void)moveFileTo:(NSString *)destinationPath {
