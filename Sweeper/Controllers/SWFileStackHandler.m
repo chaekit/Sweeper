@@ -58,23 +58,42 @@ static NSInteger remainingAsyncTaskCountGlobal;
                                                             selector:@selector(checkOnAsyncStackHandlerLoading:) userInfo:nil
                                                              repeats:NO];
     
+    [[NSRunLoop currentRunLoop] addTimer:watchdogTimer forMode:NSRunLoopCommonModes];
+    
+    NSCondition *waitForAsynTasks = [[NSCondition alloc] init];
     for (NSString *fileName in contentsAtURL) {
+        /*
+         Ignore dotfiles
+         */
+        NSInteger locationDot = [fileName rangeOfString:@"." options:NSBackwardsSearch].location;
+        
+        if (locationDot == 0) {
+            remainingAsyncTaskCount--;
+            continue;
+        }
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSString *fullFilePath = [NSString pathWithComponents:@[aURLString, fileName]];
             SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
             [temporaryUnprocessedFileStack pushObject:unprocessedFile];
             remainingAsyncTaskCount--;
+            if (remainingAsyncTaskCount == 0) {
+                [waitForAsynTasks signal];
+            }
         });
     }
 
+    [waitForAsynTasks lock];
     /*
      Investigate why loop doesn't terminate when it is simply
      ''while (remainingAsyncTaskCount > 0);''
      Maybe the process has to update is register??
      */
     while (remainingAsyncTaskCount > 0) {
-        remainingAsyncTaskCountGlobal = remainingAsyncTaskCount;
+        [waitForAsynTasks wait];
     }
+    
+    [waitForAsynTasks unlock];
     
     [watchdogTimer invalidate];
     [handler setUnprocessedFileStack:temporaryUnprocessedFileStack];
