@@ -156,6 +156,10 @@ static void initialize_fileTableView_frames() {
 }
 
 - (void)moveFileTo:(NSString *)destinationPath {
+    if ([fileStackHandler countOfUnprocessedFileStackObjects] == 0) {
+        return;
+    }
+    
     [fileStackHandler moveHeadFileToDirectoryAtPath:destinationPath];
     NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
     [cellAtTop setBackgroundColor:colorForMoveFileAnimation];
@@ -164,6 +168,10 @@ static void initialize_fileTableView_frames() {
 }
 
 - (void)deleteFile {
+    if ([fileStackHandler countOfUnprocessedFileStackObjects] == 0) {
+        return;
+    }
+    
     [fileStackHandler removeHeadFile];
     NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:NO];
     [cellAtTop setBackgroundColor:colorForDeleteFileAnimation];
@@ -171,6 +179,10 @@ static void initialize_fileTableView_frames() {
 }
 
 - (void)skipFile {
+    if ([fileStackHandler countOfUnprocessedFileStackObjects] == 0) {
+        return;
+    }
+    
     [fileStackHandler deferHeadFile];
     NSTableRowView *cellAtTop = [fileTableView rowViewAtRow:0 makeIfNecessary:YES];
     [cellAtTop setBackgroundColor:colorForSkipFileAnimation];
@@ -276,6 +288,11 @@ static void initialize_fileTableView_frames() {
 
 - (void)stackHandlerFailedToLoad {
     NSLog(@"stack handler failed to load");
+}
+
+
+- (void)stackHandlerFailedProcessWithUserInfo:(NSDictionary *)userInfo {
+    //throw error view. maybe an alertview
 }
 
 

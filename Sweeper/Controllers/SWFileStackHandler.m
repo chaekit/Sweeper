@@ -91,18 +91,45 @@ static NSInteger remainingAsyncTaskCountGlobal;
 }
 
 
+#pragma mark -
+#pragma file operations
+
+- (NSInteger)countOfUnprocessedFileStackObjects {
+    return [unprocessedFileStack stackCount];
+}
+
+- (void)checkForEmptyUnprocessedFileStack {
+    if ([unprocessedFileStack stackCount] <= 0) {
+        return;
+    }
+}
+
 - (void)removeHeadFile {
+    [self checkForEmptyUnprocessedFileStack];
+    
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     NSString *unprocessedFilePath = [unprocessedFile filePath];
-    [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]] completionHandler:nil];
-    SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
-                                                                                Action:SWFileStackHandlerProcessActionRemoved];
-    NSString *processedFilePath = [NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), @".Trash", [unprocessedFile fileName]];
-    [processedFile setCurrentPath:processedFilePath];
-    [processedFileStack pushObject:processedFile];
+    [workspace recycleURLs:@[[NSURL fileURLWithPath:unprocessedFilePath]]
+         completionHandler:^(NSDictionary *newURLs, NSError *error) {
+             if (error) {
+                 NSLog(@"%@", [error localizedDescription]);
+                 NSDictionary *userInfo = @{@"processAction": SWFileStackHandlerProcessActionRemoved,
+                                            @"error": error};
+                 [self.delegate stackHandlerFailedProcessWithUserInfo:userInfo];
+             }
+             
+             SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
+                                                                                         Action:SWFileStackHandlerProcessActionRemoved];
+             NSString *processedFilePath = [NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), @".Trash", [unprocessedFile fileName]];
+             [processedFile setCurrentPath:processedFilePath];
+             [processedFileStack pushObject:processedFile];
+         }];
+     
 }
 
 - (void)moveHeadFileToDirectoryAtPath:(NSString *)aPathString {
+    [self checkForEmptyUnprocessedFileStack];
+    
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
                                                                                 Action:SWFileStackHandlerProcessActionMoved];
@@ -113,11 +140,16 @@ static NSInteger remainingAsyncTaskCountGlobal;
     NSError *error;
     [[NSFileManager defaultManager] moveItemAtPath:[unprocessedFile filePath] toPath:destinationPath error:&error];
     if (error) {
+        NSDictionary *userInfo = @{@"processAction": SWFileStackHandlerProcessActionMoved,
+                                   @"error": error};
+        [self.delegate stackHandlerFailedProcessWithUserInfo:userInfo];
         NSLog(@"%@", [error localizedDescription]);
     }
 }
 
 - (void)deferHeadFile {
+    [self checkForEmptyUnprocessedFileStack];
+    
     SWUnProcessedFile *unprocessedFile = (SWUnProcessedFile *)[unprocessedFileStack popHead];
     SWProcessedFile *processedFile = [SWProcessedFile processedFileFromUnprocessedFile:unprocessedFile
                                                                                 Action:SWFileStackHandlerProcessActionDeferred];
@@ -143,6 +175,7 @@ static NSInteger remainingAsyncTaskCountGlobal;
         NSString *currentPath = [processedFile currentPath];
         NSString *destinationPath = [processedFile pathProcessedFrom];
         unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:[processedFile pathProcessedFrom]];
+        [unprocessedFile setFileIcon:[processedFile fileIcon]];
         [unprocessedFileStack pushObject:unprocessedFile];
        
         NSError *error;

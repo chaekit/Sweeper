@@ -15,6 +15,7 @@
 
 @optional
 - (void)stackHandlerFailedToLoad;
+- (void)stackHandlerFailedProcessWithUserInfo:(NSDictionary *)userInfo;
 
 @end
 
@@ -69,6 +70,11 @@ extern NSString * const SWFileStackHandlerProcessActionDeferred;
  processedFileStack
  */
 - (void)deferHeadFile;
+
+/*
+ Returns the number of objects in unprocessedFileStack
+ */
+- (NSInteger)countOfUnprocessedFileStackObjects;
 
 /*
  Pops the head from processedFileStack and pushes it to unprocessedFileStack
