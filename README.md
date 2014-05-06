@@ -7,7 +7,7 @@
 ### Cloning ###
 
 1. Clone the repo and `cd` into the folder.
-2. run `sh build_app.sh`
+2. run `rake install`
 
 # How to use Sweeper #
 Open Sweeper using the contextual menu.
