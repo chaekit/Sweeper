@@ -711,7 +711,7 @@
                                                             <rect key="frame" x="104" y="12" width="465" height="36"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="g6Z-L9-f95">
-                                                                <font key="font" size="32" name="HelveticaNeue-UltraLight"/>
+                                                                <font key="font" size="32" name="HelveticaNeue-Thin"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -754,6 +754,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="searchColumn" width="613" minWidth="40" maxWidth="1000" id="7lA-qs-zQp">
@@ -779,16 +780,16 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="ar8-St-nYt"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Qku-IK-6KY">
-                                                            <rect key="frame" x="147" y="17" width="588" height="29"/>
+                                                            <rect key="frame" x="108" y="26" width="588" height="29"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="071-Gh-hJt">
-                                                                <font key="font" size="30" name="HelveticaNeue-UltraLight"/>
+                                                                <font key="font" size="28" name="HelveticaNeue-Thin"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1Aq-xz-BRR">
-                                                            <rect key="frame" x="147" y="-19" width="424" height="28"/>
+                                                            <rect key="frame" x="108" y="-5" width="424" height="28"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="BxE-Sh-7HH">
                                                                 <font key="font" size="13" name="HelveticaNeue"/>
