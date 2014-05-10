@@ -79,6 +79,8 @@ static void initialize_fileTableView_frames() {
     if (!self.initialized) {
         [directorySearchBar setFocusRingType:NSFocusRingTypeNone];
         [directorySearchBar setEnabled:NO];
+        [fileTableView setAllowsTypeSelect:NO];
+        [fileTableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
 #ifdef RELEASE
         [NSApp setServicesProvider:self];
         NSUpdateDynamicServices();
