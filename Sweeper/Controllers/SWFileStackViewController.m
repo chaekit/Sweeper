@@ -99,7 +99,7 @@ static void initialize_fileTableView_frames() {
                 if (![defaults valueForKey:@"helped"]){
                     NSLog(@"User has not yet been helped.");
                     [defaults setBool:YES forKey:@"helped"];
-                    [self displayHelp];
+                    [self displayHelpAlert];
                 }else{
                     NSLog(@"User has already been helped.");
                 }
@@ -144,7 +144,7 @@ static void initialize_fileTableView_frames() {
         /*
          display help screen
          */
-        [self displayHelp];
+        [self displayHelpAlert];
     }
     
     /*
@@ -215,10 +215,10 @@ static void initialize_fileTableView_frames() {
     [fileTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
 }
 
-- (void)displayHelp {
+- (void)displayHelpAlert {
     NSAlert *helpAlert = [[NSAlert alloc] init];
     [helpAlert addButtonWithTitle:@"Got it!"];
-    [helpAlert setMessageText:@"Keyboard Shortcuts:\n\n l - leave\n m - move\n x - delete\n u - undo\n h - help"];
+    [helpAlert setMessageText:@"Keyboard Shortcuts:\n\n l - leave\n m - move\n x - delete\n z - undo\n h - help"];
     [helpAlert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
