@@ -165,7 +165,7 @@ static void initialize_fileTableView_frames() {
 - (void)fuckServices:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error {
     NSString *fileURL = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
 #ifdef DEBUG
-    fileURL = [NSString stringWithFormat:@"%@/Documents", NSHomeDirectory()];
+    fileURL = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
 #endif
     [self initDataStorageWithPath:fileURL];
     [fileTableView reloadData];
@@ -234,7 +234,7 @@ static void initialize_fileTableView_frames() {
 #ifdef RELEASE
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:path];
 #else
-    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Documents", NSHomeDirectory()];
+    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:pathToDesktop];
     [fileStackHandler setDelegate:self];
 #endif
