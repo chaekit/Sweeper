@@ -13,6 +13,7 @@
 #import "SWAppDelegate.h"
 #import "SWDirectorySearchCellView.h"
 #import "NSURL+Sweeper.h"
+#import "RMBlurredView.h"
 
 static CGFloat const SEARCHBAR_ANIMATION_DURATION = 0.3;
 
@@ -44,6 +45,8 @@ static void initialize_fileTableView_frames() {
 @property (nonatomic) BOOL initialized;
 @property (nonatomic, assign) NSUInteger selectedRowIndex;
 @property (nonatomic, retain) NSMutableArray *directoriesInUserHomeDirectory;
+@property (nonatomic, strong) RMBlurredView *blurredFilterView;
+
 
 - (NSString *)systemUserName;
 @end
@@ -81,6 +84,7 @@ static void initialize_fileTableView_frames() {
         [directorySearchBar setEnabled:NO];
         [fileTableView setAllowsTypeSelect:NO];
         [fileTableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
+        [self initBlurredFilterView];
 #ifdef RELEASE
         [NSApp setServicesProvider:self];
         NSUpdateDynamicServices();
@@ -216,6 +220,18 @@ static void initialize_fileTableView_frames() {
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:pathToDesktop];
     [fileStackHandler setDelegate:self];
 #endif
+}
+
+- (void)initBlurredFilterView {
+    CGFloat width = self.bounds.size.width;
+    CGFloat height = self.bounds.size.height - [self.fileTableView rowHeight];
+    CGFloat xPos = 0;
+    CGFloat yPos = 0;
+    self.blurredFilterView = [[RMBlurredView alloc] initWithFrame:CGRectMake(xPos, yPos, width, height)];
+    [self.blurredFilterView setBlurRadius:5.0];
+    [self.blurredFilterView setAlphaValue:0.0];
+    [self setWantsLayer:YES];
+    [self addSubview:self.blurredFilterView];
 }
 
 
