@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, SWFileAction) {
+    SWFileActionDeleteFile,
+    SWFileActionDeferFile,
+    SWFileActionMoveFile,
+    SWFileActionUndoFile
+};
+
 @class SWUnProcessedFile;
 
-/*
+/**
  Class SWProcessedFile
  
  Every SWProcessedFile action starts from a SWUnProcessedFile.
@@ -18,31 +25,34 @@
  */
 @interface SWProcessedFile : NSObject
 
-/*
+/**
  The action that was applied to the unprocessedFile.
  This property is referenced to undo the file operation.
  */
-@property (nonatomic, strong) NSString *processedAction;
+@property (nonatomic, readonly) SWFileAction processedAction;
 
-/*
+/**
  The path of the file before it was processed.
  */
-@property (nonatomic, strong) NSString *pathProcessedFrom;
+@property (nonatomic, copy, readonly) NSString *pathProcessedFrom;
 
-/*
+/**
  The current path of the file after file operation
  */
-@property (nonatomic, strong) NSString *currentPath;
+@property (nonatomic, copy, readonly) NSString *currentPath;
 
-/*
+/**
  The file icon
  */
-@property (nonatomic, strong) NSImage *fileIcon;
+@property (nonatomic, readonly) NSImage *fileIcon;
 
-/*
+/**
  Factory method for transforming unprocessedFile to processedFile
+ 
+ @param anUnprocessedFile an instance of SWUnProcessedFile
+ @param action a file action that was used to process the file
  */
 + (instancetype)processedFileFromUnprocessedFile:(SWUnProcessedFile *)anUnprocessedFile
-                                          Action:(NSString *)action;
+                                      withAction:(SWFileAction)action;
 
 @end

@@ -9,24 +9,26 @@
 #import "SWProcessedFile.h"
 #import "SWUnProcessedFile.h"
 
+@interface SWProcessedFile ()
+
+@property (nonatomic, assign) SWFileAction processedAction;
+@property (nonatomic, readwrite) NSString *pathProcessedFrom;
+@property (nonatomic, readwrite) NSString *currentPath;
+@property (nonatomic, strong) NSImage *fileIcon;
+
+@end
+
 @implementation SWProcessedFile
 
-@synthesize processedAction;
-@synthesize pathProcessedFrom;
-@synthesize currentPath;
-
-- (id)init {
-    self = [super init];
-    if (self) { }
-    return self;
-}
-
 + (instancetype)processedFileFromUnprocessedFile:(SWUnProcessedFile *)anUnprocessedFile
-                                          Action:(NSString *)action {
+                                      withAction:(SWFileAction)action
+                                 destinationPath:(NSString *)aDestinationPath
+{
     SWProcessedFile *processedFile = [[SWProcessedFile alloc] init];
     [processedFile setProcessedAction:action];
     [processedFile setPathProcessedFrom:[anUnprocessedFile filePath]];
     [processedFile setFileIcon:[anUnprocessedFile fileIcon]];
+    [processedFile setCurrentPath:aDestinationPath];
     return processedFile;
 }
 
