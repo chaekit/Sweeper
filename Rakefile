@@ -40,18 +40,9 @@ def update_pasteboard_service
   sh "/System/Library/CoreServices/pbs -update"
 end
 
-def remove_preferences
-	begin
-		sh "defaults remove com.jaychae.Sweeper"
-	rescue  
-		puts "No App defaults to remove"
-	end
-end
-
 task :install do 
   build_app
   remove_derived_data
   replace_old_app_with_new
   update_pasteboard_service
-  remove_preferences
 end

@@ -94,16 +94,6 @@ static void initialize_fileTableView_frames() {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             [self _initDirectoriesInUserHomeDirectory];
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                if (![defaults valueForKey:@"helped"]){
-                    NSLog(@"User has not yet been helped.");
-                    [defaults setBool:YES forKey:@"helped"];
-                    [self displayHelpAlert];
-                }else{
-                    NSLog(@"User has already been helped.");
-                }
-            });
         });
     }
 }
@@ -140,11 +130,6 @@ static void initialize_fileTableView_frames() {
          undo file
          */
         [self undoFileAction];
-    } else if ([keyCharacter isEqualToString:@"h"]) {
-        /*
-         display help screen
-         */
-        [self displayHelpAlert];
     }
     
     /*
@@ -213,13 +198,6 @@ static void initialize_fileTableView_frames() {
     if (error)  return;
     
     [fileTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
-}
-
-- (void)displayHelpAlert {
-    NSAlert *helpAlert = [[NSAlert alloc] init];
-    [helpAlert addButtonWithTitle:@"Got it!"];
-    [helpAlert setMessageText:@"Keyboard Shortcuts:\n\n l - leave\n m - move\n x - delete\n z - undo\n h - help"];
-    [helpAlert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
 - (void)cancelOperation:(id)sender {
