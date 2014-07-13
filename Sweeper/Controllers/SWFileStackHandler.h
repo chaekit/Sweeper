@@ -9,22 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @class SWUnProcessedFile;
+@class SWProcessedFile;
 @class SWFileStack;
+@class SWFileStackHandler;
 
 @protocol SWFileStackHandlerDelegate <NSObject>
 
 @optional
 - (void)stackHandlerFailedToLoad;
 - (void)stackHandlerFailedProcessWithUserInfo:(NSDictionary *)userInfo;
+- (void)stackHandler:(SWFileStackHandler *)stackHandler
+failedToUndoProcessedFile:(SWProcessedFile *)processedFile
+               error:(NSError *)error;
 
 @end
-
-/*
- Possible statuses of SWProcessedFile's 
- */
-extern NSString * const SWFileStackHandlerProcessActionRemoved;
-extern NSString * const SWFileStackHandlerProcessActionMoved;
-extern NSString * const SWFileStackHandlerProcessActionDeferred;
 
 /*
  Class SWFileStackHandler

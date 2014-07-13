@@ -44,15 +44,16 @@ typedef NS_ENUM(NSInteger, SWFileAction) {
 /**
  The file icon
  */
-@property (nonatomic, readonly) NSImage *fileIcon;
+@property (nonatomic, strong, readonly) NSImage *fileIcon;
 
 /**
  Factory method for transforming unprocessedFile to processedFile
  
  @param anUnprocessedFile an instance of SWUnProcessedFile
  @param action a file action that was used to process the file
+ @param aDestinationPath the path to the unprocessedFile after it has been processed
  */
 + (instancetype)processedFileFromUnprocessedFile:(SWUnProcessedFile *)anUnprocessedFile
-                                      withAction:(SWFileAction)action;
-
+                                      withAction:(SWFileAction)action
+                                 destinationPath:(NSString *)aDestinationPath;
 @end
