@@ -12,6 +12,13 @@
 @implementation SWAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"%d", [defaults boolForKey:@"helped"]);
+    if (![defaults boolForKey:@"helped"]){
+        NSLog(@"Helped Not Set");
+    }else{
+        NSLog(@"Helped Set");
+    }
 }
 
 @end
