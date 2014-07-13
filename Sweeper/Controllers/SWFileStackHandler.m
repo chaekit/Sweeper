@@ -17,6 +17,9 @@ static NSInteger remainingAsyncTaskCountGlobal;
 
 @property (nonatomic, strong) NSWorkspace *workspace;
 
+@property (nonatomic, strong) SWFileStack *unprocessedFileStack;
+@property (nonatomic, strong) SWFileStack *processedFileStack;
+
 @end
 
 @implementation SWFileStackHandler
