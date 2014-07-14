@@ -34,7 +34,7 @@ failedToUndoProcessedFile:(SWProcessedFile *)processedFile
 /**
  Creates a handler for a given URL
  */
-+ (instancetype)stackHandlerForURL:(NSString *)aURLString;
+- (instancetype)initWithPathToDirectory:(NSString *)aURLString;
 
 /**
  SWFileStackHandlerDelegate delegate

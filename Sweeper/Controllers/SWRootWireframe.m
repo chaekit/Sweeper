@@ -38,7 +38,10 @@
 
 - (void)setupFileStackHandler
 {
-    self.fileStackHandler = [[SWFileStackHandler alloc] init];
+    // TODO : get rid of hardcoded path
+    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
+    self.fileStackHandler = [[SWFileStackHandler alloc] initWithPathToDirectory:pathToDesktop];
+    [self.fileStackHandler setDelegate:self];
 }
 
 - (void)setupHomeDirectoryHandler

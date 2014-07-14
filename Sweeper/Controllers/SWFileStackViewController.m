@@ -234,9 +234,9 @@ static void initialize_fileTableView_frames() {
 #ifdef RELEASE
     fileStackHandler = [SWFileStackHandler stackHandlerForURL:path];
 #else
-    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
-    fileStackHandler = [SWFileStackHandler stackHandlerForURL:pathToDesktop];
-    [fileStackHandler setDelegate:self];
+//    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
+//    fileStackHandler = [SWFileStackHandler stackHandlerForURL:pathToDesktop];
+//    [fileStackHandler setDelegate:self];
 #endif
 }
 

@@ -34,52 +34,60 @@ static NSInteger remainingAsyncTaskCountGlobal;
     return self;
 }
 
-+ (instancetype)stackHandlerForURL:(NSString *)aURLString {
-    SWFileStackHandler *handler = [[SWFileStackHandler alloc] init];
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    NSError *error;
-    NSArray *contentsAtURL = [fileManager contentsOfDirectoryAtPath:aURLString error:&error];
-    
-    __block SWFileStack *temporaryUnprocessedFileStack = [[SWFileStack alloc] init];
-    __block NSInteger remainingAsyncTaskCount = [contentsAtURL count];
-   
-    NSTimer *watchdogTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
-                                                              target:self
-                                                            selector:@selector(checkOnAsyncStackHandlerLoading:) userInfo:nil
-                                                             repeats:NO];
-    [[NSRunLoop currentRunLoop] addTimer:watchdogTimer forMode:NSRunLoopCommonModes];
-    
-    NSCondition *waitForAsynTasks = [[NSCondition alloc] init];
-    for (NSString *fileName in contentsAtURL) {
-        BOOL fileIsDotfile = ([fileName rangeOfString:@"." options:NSBackwardsSearch].location == 0);
+- (instancetype)initWithPathToDirectory:(NSString *)aURLString
+{
+    self = [super init];
+    if (self) {
+        _unprocessedFileStack = [[SWFileStack alloc] init];
+        _processedFileStack = [[SWFileStack alloc] init];
+        _workspace = [[NSWorkspace alloc] init];
         
-        if (fileIsDotfile) {
-            remainingAsyncTaskCount--;
-            continue;
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        NSError *error;
+        NSArray *contentsAtURL = [fileManager contentsOfDirectoryAtPath:aURLString error:&error];
+        
+        __block SWFileStack *temporaryUnprocessedFileStack = [[SWFileStack alloc] init];
+        __block NSInteger remainingAsyncTaskCount = [contentsAtURL count];
+       
+        NSTimer *watchdogTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                                  target:self
+                                                                selector:@selector(checkOnAsyncStackHandlerLoading:) userInfo:nil
+                                                                 repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:watchdogTimer forMode:NSRunLoopCommonModes];
+        
+        NSCondition *waitForAsynTasks = [[NSCondition alloc] init];
+        for (NSString *fileName in contentsAtURL) {
+            BOOL fileIsDotfile = ([fileName rangeOfString:@"." options:NSBackwardsSearch].location == 0);
+            
+            if (fileIsDotfile) {
+                remainingAsyncTaskCount--;
+                continue;
+            }
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSString *fullFilePath = [NSString pathWithComponents:@[aURLString, fileName]];
+                SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
+                [temporaryUnprocessedFileStack pushObject:unprocessedFile];
+                remainingAsyncTaskCount--;
+                if (remainingAsyncTaskCount == 0) {
+                    [waitForAsynTasks signal];
+                }
+            });
+        }
+
+        [waitForAsynTasks lock];
+        while (remainingAsyncTaskCount > 0) {
+            [waitForAsynTasks wait];
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString *fullFilePath = [NSString pathWithComponents:@[aURLString, fileName]];
-            SWUnProcessedFile *unprocessedFile = [SWUnProcessedFile unprocessedFileAtPath:fullFilePath];
-            [temporaryUnprocessedFileStack pushObject:unprocessedFile];
-            remainingAsyncTaskCount--;
-            if (remainingAsyncTaskCount == 0) {
-                [waitForAsynTasks signal];
-            }
-        });
-    }
-
-    [waitForAsynTasks lock];
-    while (remainingAsyncTaskCount > 0) {
-        [waitForAsynTasks wait];
+        [waitForAsynTasks unlock];
+        
+        [watchdogTimer invalidate];
+        [self setUnprocessedFileStack:temporaryUnprocessedFileStack];
+        
     }
     
-    [waitForAsynTasks unlock];
-    
-    [watchdogTimer invalidate];
-    [handler setUnprocessedFileStack:temporaryUnprocessedFileStack];
-    
-    return handler;
+    return self;
 }
 
 - (void)checkOnAsyncStackHandlerLoading:(NSTimer *)watchdogTimer {
