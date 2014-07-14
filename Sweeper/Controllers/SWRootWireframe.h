@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SWStackViewController.h"
 
 @interface SWRootWireframe : NSObject
+
+@property (nonatomic, readonly) SWStackViewController *fileStackViewController;
 
 @end

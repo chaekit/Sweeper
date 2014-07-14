@@ -22,8 +22,8 @@ NSString * const SWFileStackCellView_Identifier = @"SWFileStackCellView_Identifi
 
 - (void)updateWithUnprocessedFile:(SWUnProcessedFile *)unprocessedFile
 {
-    [self.textField setStringValue:[unprocessedFile fileName]];
-    [self.imageView setImage:[unprocessedFile fileIcon]];
+    [self.unprocessedFileNameTextField setStringValue:[unprocessedFile fileName]];
+    [self.unprocessedFileIconImageView setImage:[unprocessedFile fileIcon]];
 }
 
 @end

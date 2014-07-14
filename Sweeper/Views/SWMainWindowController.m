@@ -7,11 +7,26 @@
 //
 
 #import "SWMainWindowController.h"
+#import "SWRootWireframe.h"
 
 @interface SWMainWindowController ()
+
+@property (nonatomic, strong) SWRootWireframe *rootWireframe;
 
 @end
 
 @implementation SWMainWindowController
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.rootWireframe = [[SWRootWireframe alloc] init];
+    [self setupInitivalView];
+}
+
+- (void)setupInitivalView {
+    NSView *fileStackView = self.rootWireframe.fileStackViewController.view;
+    [self.window.contentView addSubview:fileStackView];
+    [self.window.contentView setFrame:fileStackView.bounds];
+}
 
 @end

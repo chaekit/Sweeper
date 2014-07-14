@@ -10,13 +10,11 @@
 #import "SWFileStackHandler.h"
 #import "SWHomeDirectoryHandler.h"
 
-#import "SWStackViewController.h"
-
 @interface SWRootWireframe () <SWFileStackHandlerDelegate, SWHomeDirectoryHandlerDelegate>
+
 
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
 @property (nonatomic, strong) SWHomeDirectoryHandler *homeDirectoryHandler;
-
 @property (nonatomic, strong) NSArray *filesInHomeDirectory;
 
 @property (nonatomic, strong) SWStackViewController *fileStackViewController;
@@ -30,8 +28,8 @@
     self = [super init];
     if (self) {
         [self setupFileStackHandler];
-        [self setupHomeDirectoryHandler];
-        [self fileStackViewController];
+//        [self setupHomeDirectoryHandler];
+        [self setupStackViewController];
     }
     return self;
 }
