@@ -35,6 +35,8 @@
 		19ACB3BE1876540E00168B38 /* SWFileStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */; };
 		19B1D4F01908BDEE00C6F57F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
 		19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
+		19CC4B5A197326E4003A8572 /* SWHomeDirectoryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B59197326E4003A8572 /* SWHomeDirectoryHandler.m */; };
+		19CC4B5D19733AFC003A8572 /* SWRootWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */; };
 		19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,10 @@
 		19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackViewController.h; path = Controllers/SWFileStackViewController.h; sourceTree = "<group>"; };
 		19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackViewController.m; path = Controllers/SWFileStackViewController.m; sourceTree = "<group>"; };
 		19B94DEA18ED0C7D00C7436F /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		19CC4B58197326E4003A8572 /* SWHomeDirectoryHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWHomeDirectoryHandler.h; path = Controllers/SWHomeDirectoryHandler.h; sourceTree = "<group>"; };
+		19CC4B59197326E4003A8572 /* SWHomeDirectoryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWHomeDirectoryHandler.m; path = Controllers/SWHomeDirectoryHandler.m; sourceTree = "<group>"; };
+		19CC4B5B19733AFC003A8572 /* SWRootWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRootWireframe.h; path = Controllers/SWRootWireframe.h; sourceTree = "<group>"; };
+		19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRootWireframe.m; path = Controllers/SWRootWireframe.m; sourceTree = "<group>"; };
 		19DDBF8419037E3E000DADAC /* NSURL+Sweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Sweeper.h"; path = "Models/NSURL+Sweeper.h"; sourceTree = "<group>"; };
 		19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Sweeper.m"; path = "Models/NSURL+Sweeper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +258,10 @@
 				19ACB3B618764D4700168B38 /* SWFileStackHandler.m */,
 				19ACB3BB1876540E00168B38 /* SWFileStackViewController.h */,
 				19ACB3BC1876540E00168B38 /* SWFileStackViewController.m */,
+				19CC4B58197326E4003A8572 /* SWHomeDirectoryHandler.h */,
+				19CC4B59197326E4003A8572 /* SWHomeDirectoryHandler.m */,
+				19CC4B5B19733AFC003A8572 /* SWRootWireframe.h */,
+				19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -362,9 +372,11 @@
 				19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */,
 				19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */,
 				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
+				19CC4B5A197326E4003A8572 /* SWHomeDirectoryHandler.m in Sources */,
 				19487F2D1876A9A2003B637B /* SWProcessedFile.m in Sources */,
 				19738E5A1875A6D900461F96 /* main.m in Sources */,
 				198D297D187BE7C2001DA802 /* SWDirectorySearchCellView.m in Sources */,
+				19CC4B5D19733AFC003A8572 /* SWRootWireframe.m in Sources */,
 				19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

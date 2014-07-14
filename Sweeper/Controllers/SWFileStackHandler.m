@@ -43,25 +43,17 @@ static NSInteger remainingAsyncTaskCountGlobal;
     __block SWFileStack *temporaryUnprocessedFileStack = [[SWFileStack alloc] init];
     __block NSInteger remainingAsyncTaskCount = [contentsAtURL count];
    
-    /*
-     Fire an interrupt 5 seconds after the asyncloading starts. Assume that asyncloading went wrong
-     if the loading hasn't finished in 5 secs.
-     */
     NSTimer *watchdogTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                                               target:self
                                                             selector:@selector(checkOnAsyncStackHandlerLoading:) userInfo:nil
                                                              repeats:NO];
-    
     [[NSRunLoop currentRunLoop] addTimer:watchdogTimer forMode:NSRunLoopCommonModes];
     
     NSCondition *waitForAsynTasks = [[NSCondition alloc] init];
     for (NSString *fileName in contentsAtURL) {
-        /*
-         Ignore dotfiles
-         */
-        NSInteger locationDot = [fileName rangeOfString:@"." options:NSBackwardsSearch].location;
+        BOOL fileIsDotfile = ([fileName rangeOfString:@"." options:NSBackwardsSearch].location == 0);
         
-        if (locationDot == 0) {
+        if (fileIsDotfile) {
             remainingAsyncTaskCount--;
             continue;
         }
@@ -78,11 +70,6 @@ static NSInteger remainingAsyncTaskCountGlobal;
     }
 
     [waitForAsynTasks lock];
-    /*
-     Investigate why loop doesn't terminate when it is simply
-     ''while (remainingAsyncTaskCount > 0);''
-     Maybe the process has to update is register??
-     */
     while (remainingAsyncTaskCount > 0) {
         [waitForAsynTasks wait];
     }
@@ -92,8 +79,6 @@ static NSInteger remainingAsyncTaskCountGlobal;
     [watchdogTimer invalidate];
     [handler setUnprocessedFileStack:temporaryUnprocessedFileStack];
     
-    NSLog(@"%ld remaining task", (long)remainingAsyncTaskCount);
-    NSLog(@"%ld@ remaining task", [temporaryUnprocessedFileStack stackCount]);
     return handler;
 }
 
