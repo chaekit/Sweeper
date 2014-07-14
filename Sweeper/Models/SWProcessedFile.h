@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, SWFileAction) {
-    SWFileActionDeleteFile,
-    SWFileActionDeferFile,
-    SWFileActionMoveFile,
-    SWFileActionUndoFile
-};
-
 @class SWUnProcessedFile;
 
 /**

@@ -11,9 +11,39 @@
 FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
 
 @class SWFileStack;
+@class SWStackViewController;
+
+@protocol SWStackViewControllerEventDelegte <NSObject>
+
+/**
+ Called when a stackViewController receives a remove file action
+ */
+- (void)stackViewConrollerDidReceiveRemoveFileAction:(SWStackViewController *)stackViewController;
+
+/**
+ Called when a stackViewController receives a leave file action
+ */
+- (void)stackViewConrollerDidReceiveLeaveFileAction:(SWStackViewController *)stackViewController;
+
+/**
+ Called when a stackViewController receives a undo file action
+ */
+- (void)stackViewConrollerDidReceiveUndoFileAction:(SWStackViewController *)stackViewController;
+
+@end
 
 @interface SWStackViewController : NSViewController
 
+/**
+ A SWFileStack of unprocessed files that this view controller has to display
+ */
 @property (nonatomic, strong) SWFileStack *fileStackDataSource;
 
+@property (nonatomic, weak) id<SWStackViewControllerEventDelegte> delegate;
+
+/**
+ Pops the top cell of the table view with given fileAction
+ @param fileAction the action that was given.
+ */
+- (void)popStackCellViewForAction:(SWFileAction)fileAction;
 @end

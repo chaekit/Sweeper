@@ -7,3 +7,10 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif
+
+typedef NS_ENUM(NSInteger, SWFileAction) {
+    SWFileActionDeleteFile,
+    SWFileActionDeferFile,
+    SWFileActionMoveFile,
+    SWFileActionUndoFile
+};

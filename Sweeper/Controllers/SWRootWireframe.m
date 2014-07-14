@@ -10,8 +10,9 @@
 #import "SWFileStackHandler.h"
 #import "SWHomeDirectoryHandler.h"
 
-@interface SWRootWireframe () <SWFileStackHandlerDelegate, SWHomeDirectoryHandlerDelegate>
-
+@interface SWRootWireframe () <SWFileStackHandlerDelegate,
+                                SWHomeDirectoryHandlerDelegate,
+                                SWStackViewControllerEventDelegte>
 
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
 @property (nonatomic, strong) SWHomeDirectoryHandler *homeDirectoryHandler;
@@ -51,6 +52,7 @@
 {
     self.fileStackViewController = [[SWStackViewController alloc] initWithNibName:SWStackViewController_NIB_Name
                                                                            bundle:nil];
+    [self.fileStackViewController setDelegate:self];
     [self.fileStackViewController setFileStackDataSource:self.fileStackHandler.unprocessedFileStack];
 }
 
@@ -76,5 +78,23 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames
     
 }
 
+
+#pragma mark - SWFileStackViewControllerDelegate methods
+
+- (void)stackViewConrollerDidReceiveUndoFileAction:(SWStackViewController *)stackViewController {
+//    [self.fileStackViewController popStackCellViewForAction:SWFileActionUndoFile];
+}
+
+- (void)stackViewConrollerDidReceiveRemoveFileAction:(SWStackViewController *)stackViewController
+{
+    [self.fileStackHandler removeHeadFile];
+    [self.fileStackViewController popStackCellViewForAction:SWFileActionDeleteFile];
+}
+
+- (void)stackViewConrollerDidReceiveLeaveFileAction:(SWStackViewController *)stackViewController
+{
+    [self.fileStackHandler deferHeadFile];
+    [self.fileStackViewController popStackCellViewForAction:SWFileActionDeferFile];
+}
 
 @end
