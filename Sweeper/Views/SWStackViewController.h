@@ -46,4 +46,11 @@ FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
  @param fileAction the action that was given.
  */
 - (void)popStackCellViewForAction:(SWFileAction)fileAction;
+
+/**
+ Pushes a new cell to the table view with given fileAction
+ @param fileAction the action that was given.
+ */
+- (void)pushStackCellViewForAction:(SWFileAction)fileAction;
+
 @end

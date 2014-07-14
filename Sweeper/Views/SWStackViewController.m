@@ -21,7 +21,8 @@ static NSString * const kSWKeyEventCharacterLeaveFile       = @"l";
 static NSString * const kSWKeyEventCharacterUndoAction      = @"z";
 static NSString * const kSWKeyEventCharacterShowHelpScreen  = @"h";
 
-static NSTableViewAnimationOptions const kSWStackViewControllerDefaulPopAnimationOptions = (NSTableViewAnimationEffectFade | NSTableViewAnimationSlideUp) ;
+static NSTableViewAnimationOptions const kSWStackViewControllerDefaultCellPopAnimationOptions = (NSTableViewAnimationEffectFade | NSTableViewAnimationSlideUp) ;
+static NSTableViewAnimationOptions const kSWStackViewControllerDefaultCellPushAnimationOptions = (NSTableViewAnimationEffectFade | NSTableViewAnimationSlideDown) ;
 
 static NSColor *kSWStackViewConrollerColorForDeleteFileAnimation;
 static NSColor *kSWStackViewConrollerColorForMoveFileAnimation;
@@ -72,7 +73,13 @@ static void initialize_animation_colors() {
     }
     [cellAtTop setBackgroundColor:colorForAnimation];
     [self.fileStackTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:0]
-                                   withAnimation:kSWStackViewControllerDefaulPopAnimationOptions];
+                                   withAnimation:kSWStackViewControllerDefaultCellPopAnimationOptions];
+}
+
+- (void)pushStackCellViewForAction:(SWFileAction)fileAction
+{
+    [self.fileStackTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0]
+                                   withAnimation:kSWStackViewControllerDefaultCellPushAnimationOptions];
 }
 
 
@@ -81,6 +88,7 @@ static void initialize_animation_colors() {
 - (void)stackTableView:(SWStackTableView *)stackTableView didReceiveKeyEvent:(NSEvent *)keyEvent
 {
     NSString *keyCharacter = [keyEvent characters];
+    
     if ([keyCharacter isEqualToString:kSWKeyEventCharacterMoveFile]) {
     } else if ([keyCharacter isEqualToString:kSWKeyEventCharacterDeleteFile]) {
         [self.delegate stackViewConrollerDidReceiveRemoveFileAction:self];

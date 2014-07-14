@@ -81,8 +81,10 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames
 
 #pragma mark - SWFileStackViewControllerDelegate methods
 
-- (void)stackViewConrollerDidReceiveUndoFileAction:(SWStackViewController *)stackViewController {
-//    [self.fileStackViewController popStackCellViewForAction:SWFileActionUndoFile];
+- (void)stackViewConrollerDidReceiveUndoFileAction:(SWStackViewController *)stackViewController
+{
+    [self.fileStackHandler undoPreviousAction:nil];
+    [self.fileStackViewController pushStackCellViewForAction:SWFileActionUndoFile];
 }
 
 - (void)stackViewConrollerDidReceiveRemoveFileAction:(SWStackViewController *)stackViewController
