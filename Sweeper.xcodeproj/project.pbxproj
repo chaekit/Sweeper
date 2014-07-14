@@ -37,6 +37,12 @@
 		19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B94DEA18ED0C7D00C7436F /* QuickLook.framework */; };
 		19CC4B5A197326E4003A8572 /* SWHomeDirectoryHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B59197326E4003A8572 /* SWHomeDirectoryHandler.m */; };
 		19CC4B5D19733AFC003A8572 /* SWRootWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */; };
+		19CC4B6119735A1A003A8572 /* SWStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B5F19735A1A003A8572 /* SWStackViewController.m */; };
+		19CC4B6219735A1A003A8572 /* SWStackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CC4B6019735A1A003A8572 /* SWStackViewController.xib */; };
+		19CC4B6519735A8C003A8572 /* SWStackTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B6419735A8C003A8572 /* SWStackTableView.m */; };
+		19CC4B6919735E06003A8572 /* SWFileStackCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B6819735E06003A8572 /* SWFileStackCellView.m */; };
+		19CC4B6D1973613D003A8572 /* SWMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC4B6B1973613D003A8572 /* SWMainWindowController.m */; };
+		19CC4B6E1973613D003A8572 /* SWMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CC4B6C1973613D003A8572 /* SWMainWindowController.xib */; };
 		19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +118,16 @@
 		19CC4B59197326E4003A8572 /* SWHomeDirectoryHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWHomeDirectoryHandler.m; path = Controllers/SWHomeDirectoryHandler.m; sourceTree = "<group>"; };
 		19CC4B5B19733AFC003A8572 /* SWRootWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRootWireframe.h; path = Controllers/SWRootWireframe.h; sourceTree = "<group>"; };
 		19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRootWireframe.m; path = Controllers/SWRootWireframe.m; sourceTree = "<group>"; };
+		19CC4B5E19735A1A003A8572 /* SWStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWStackViewController.h; path = Views/SWStackViewController.h; sourceTree = "<group>"; };
+		19CC4B5F19735A1A003A8572 /* SWStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWStackViewController.m; path = Views/SWStackViewController.m; sourceTree = "<group>"; };
+		19CC4B6019735A1A003A8572 /* SWStackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SWStackViewController.xib; path = Views/SWStackViewController.xib; sourceTree = "<group>"; };
+		19CC4B6319735A8C003A8572 /* SWStackTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWStackTableView.h; path = Views/SWStackTableView.h; sourceTree = "<group>"; };
+		19CC4B6419735A8C003A8572 /* SWStackTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWStackTableView.m; path = Views/SWStackTableView.m; sourceTree = "<group>"; };
+		19CC4B6719735E06003A8572 /* SWFileStackCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWFileStackCellView.h; path = Views/SWStackViewController/SWFileStackCellView.h; sourceTree = "<group>"; };
+		19CC4B6819735E06003A8572 /* SWFileStackCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWFileStackCellView.m; path = Views/SWStackViewController/SWFileStackCellView.m; sourceTree = "<group>"; };
+		19CC4B6A1973613D003A8572 /* SWMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWMainWindowController.h; path = Views/SWMainWindowController.h; sourceTree = "<group>"; };
+		19CC4B6B1973613D003A8572 /* SWMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWMainWindowController.m; path = Views/SWMainWindowController.m; sourceTree = "<group>"; };
+		19CC4B6C1973613D003A8572 /* SWMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SWMainWindowController.xib; path = Views/SWMainWindowController.xib; sourceTree = "<group>"; };
 		19DDBF8419037E3E000DADAC /* NSURL+Sweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Sweeper.h"; path = "Models/NSURL+Sweeper.h"; sourceTree = "<group>"; };
 		19DDBF8519037E3E000DADAC /* NSURL+Sweeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Sweeper.m"; path = "Models/NSURL+Sweeper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,8 +261,12 @@
 		19738E821875A73B00461F96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19CC4B6619735DD5003A8572 /* SWStackViewController */,
 				198D297B187BE7C2001DA802 /* SWDirectorySearchCellView.h */,
 				198D297C187BE7C2001DA802 /* SWDirectorySearchCellView.m */,
+				19CC4B6A1973613D003A8572 /* SWMainWindowController.h */,
+				19CC4B6B1973613D003A8572 /* SWMainWindowController.m */,
+				19CC4B6C1973613D003A8572 /* SWMainWindowController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -264,6 +284,20 @@
 				19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19CC4B6619735DD5003A8572 /* SWStackViewController */ = {
+			isa = PBXGroup;
+			children = (
+				19CC4B6319735A8C003A8572 /* SWStackTableView.h */,
+				19CC4B6419735A8C003A8572 /* SWStackTableView.m */,
+				19CC4B5E19735A1A003A8572 /* SWStackViewController.h */,
+				19CC4B5F19735A1A003A8572 /* SWStackViewController.m */,
+				19CC4B6019735A1A003A8572 /* SWStackViewController.xib */,
+				19CC4B6719735E06003A8572 /* SWFileStackCellView.h */,
+				19CC4B6819735E06003A8572 /* SWFileStackCellView.m */,
+			);
+			name = SWStackViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +381,8 @@
 			files = (
 				19738E581875A6D900461F96 /* InfoPlist.strings in Resources */,
 				19738E661875A6D900461F96 /* Images.xcassets in Resources */,
+				19CC4B6E1973613D003A8572 /* SWMainWindowController.xib in Resources */,
+				19CC4B6219735A1A003A8572 /* SWStackViewController.xib in Resources */,
 				19738E5E1875A6D900461F96 /* Credits.rtf in Resources */,
 				19738E641875A6D900461F96 /* MainMenu.xib in Resources */,
 			);
@@ -368,10 +404,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				19ACB3B318764B7C00168B38 /* SWFileStack.m in Sources */,
+				19CC4B6119735A1A003A8572 /* SWStackViewController.m in Sources */,
 				19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
+				19CC4B6519735A8C003A8572 /* SWStackTableView.m in Sources */,
 				19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */,
 				19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */,
 				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
+				19CC4B6919735E06003A8572 /* SWFileStackCellView.m in Sources */,
+				19CC4B6D1973613D003A8572 /* SWMainWindowController.m in Sources */,
 				19CC4B5A197326E4003A8572 /* SWHomeDirectoryHandler.m in Sources */,
 				19487F2D1876A9A2003B637B /* SWProcessedFile.m in Sources */,
 				19738E5A1875A6D900461F96 /* main.m in Sources */,
