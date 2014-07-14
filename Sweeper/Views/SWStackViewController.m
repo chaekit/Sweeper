@@ -51,7 +51,13 @@ static void initialize_animation_colors() {
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self setupDefaultProperties];
     [self.fileStackTableView setKeyEventDelegate:self];
+}
+
+- (void)setupDefaultProperties
+{
+    [self.view setWantsLayer:YES];
 }
 
 - (void)popStackCellViewForAction:(SWFileAction)fileAction
@@ -82,6 +88,12 @@ static void initialize_animation_colors() {
                                    withAnimation:kSWStackViewControllerDefaultCellPushAnimationOptions];
 }
 
+- (void)hideStackView
+{
+    [self resignFirstResponder];
+    [self.view setAlphaValue:0.0];
+}
+
 
 #pragma mark - SWStackTableViewEventDelegate methods
 
@@ -90,6 +102,7 @@ static void initialize_animation_colors() {
     NSString *keyCharacter = [keyEvent characters];
     
     if ([keyCharacter isEqualToString:kSWKeyEventCharacterMoveFile]) {
+        [self.delegate stackViewConrollerDidReceiveMoveFileAction:self];
     } else if ([keyCharacter isEqualToString:kSWKeyEventCharacterDeleteFile]) {
         [self.delegate stackViewConrollerDidReceiveRemoveFileAction:self];
     } else if ([keyCharacter isEqualToString:kSWKeyEventCharacterLeaveFile]) {

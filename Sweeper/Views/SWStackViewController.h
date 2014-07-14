@@ -30,6 +30,11 @@ FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
  */
 - (void)stackViewConrollerDidReceiveUndoFileAction:(SWStackViewController *)stackViewController;
 
+/**
+ Called when a stackViewController receives a move file action
+ */
+- (void)stackViewConrollerDidReceiveMoveFileAction:(SWStackViewController *)stackViewController;
+
 @end
 
 @interface SWStackViewController : NSViewController
@@ -52,5 +57,10 @@ FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
  @param fileAction the action that was given.
  */
 - (void)pushStackCellViewForAction:(SWFileAction)fileAction;
+
+/**
+ Hides the stack view.
+ */
+- (void)hideStackView;
 
 @end

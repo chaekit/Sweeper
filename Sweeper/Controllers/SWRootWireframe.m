@@ -99,4 +99,9 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames
     [self.fileStackViewController popStackCellViewForAction:SWFileActionDeferFile];
 }
 
+- (void)stackViewConrollerDidReceiveMoveFileAction:(SWStackViewController *)stackViewController
+{
+    [self.fileStackViewController hideStackView];
+}
+
 @end
