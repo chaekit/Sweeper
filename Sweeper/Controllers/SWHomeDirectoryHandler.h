@@ -33,11 +33,16 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames;
 
 @end
 
-
+/**
+ Handles search and mapping of files recursively in home directory
+ */
 @interface SWHomeDirectoryHandler : NSObject
 
 @property (nonatomic, weak) id<SWHomeDirectoryHandlerDelegate> delegate;
 
+/**
+ All the files recursively in home directory.
+ */
 @property (nonatomic, copy, readonly) NSArray *filesInHomeDirectory;
 
 @end
