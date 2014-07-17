@@ -23,28 +23,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="620" height="444"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="xP2-JR-grZ" userLabel="fileStackViewContainer">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIV-2G-f4c" userLabel="directoryViewContainer">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="444"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIV-2G-f4c" userLabel="directoryViewContainer">
-                        <rect key="frame" x="-88" y="-48" width="796" height="539"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xP2-JR-grZ" userLabel="fileStackViewContainer">
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="444"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="KIV-2G-f4c" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="5q6-5M-wIN"/>
-                    <constraint firstAttribute="centerY" secondItem="xP2-JR-grZ" secondAttribute="centerY" id="AL2-DR-B78"/>
-                    <constraint firstAttribute="trailing" secondItem="KIV-2G-f4c" secondAttribute="trailing" id="Kz9-LT-xzW"/>
-                    <constraint firstItem="xP2-JR-grZ" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="SXg-lb-49W"/>
-                    <constraint firstAttribute="bottom" secondItem="xP2-JR-grZ" secondAttribute="bottom" id="WPp-EO-wg4"/>
-                    <constraint firstItem="xP2-JR-grZ" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="WiW-Vi-mhg"/>
-                    <constraint firstAttribute="centerX" secondItem="xP2-JR-grZ" secondAttribute="centerX" id="hOQ-h8-SXr"/>
-                    <constraint firstItem="KIV-2G-f4c" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="sWP-x8-yU5"/>
-                    <constraint firstAttribute="trailing" secondItem="xP2-JR-grZ" secondAttribute="trailing" id="tx3-2W-bnY"/>
-                    <constraint firstAttribute="centerX" secondItem="KIV-2G-f4c" secondAttribute="centerX" id="wPx-oE-6Jz"/>
-                    <constraint firstAttribute="bottom" secondItem="KIV-2G-f4c" secondAttribute="bottom" constant="-48" id="x7e-cJ-FnR"/>
-                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
