@@ -13,7 +13,6 @@
 
 @interface SWAppDelegate ()
 
-@property (nonatomic, strong) SWMainWindowController *rootWindowController;
 @property (nonatomic, strong) SWRootWireframe *rootWireframe;
 @property (nonatomic, strong) SWServiceHandler *serviceHandler;
 
@@ -22,9 +21,15 @@
 @implementation SWAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+#ifdef DEBUG
+    NSString *developmentPath = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
+    self.rootWireframe = [[SWRootWireframe alloc] initWithDirectoryPathToDirectory:developmentPath];
+    [self.rootWireframe beginFlow];
+#else
     self.serviceHandler = [[SWServiceHandler alloc] init];
     [NSApp setServicesProvider:self.serviceHandler];
     NSUpdateDynamicServices();
+#endif
     [self.window setReleasedWhenClosed:NO];
     [self.window close];
 }

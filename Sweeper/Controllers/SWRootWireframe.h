@@ -17,8 +17,8 @@
 @property (nonatomic, readonly) SWStackViewController *fileStackViewController;
 @property (nonatomic, readonly) SWHomeDirectoryViewController *homeDirectoryViewController;
 
-@property (nonatomic, strong) SWMainWindowController *mainWindowController;
-
 - (instancetype)initWithDirectoryPathToDirectory:(NSString *)pathToDirectory;
+
+- (void)beginFlow;
 
 @end

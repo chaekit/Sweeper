@@ -12,6 +12,9 @@
 #import "SWHomeDirectoryViewController.h"
 #import "SWStackViewController.h"
 
+
+NSString *const SWMainWindowController_NIB_Name = @"SWMainWindowController";
+
 @interface SWMainWindowController ()
 
 @property (nonatomic, weak) IBOutlet NSView *fileStackViewContainerView;

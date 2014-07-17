@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+FOUNDATION_EXPORT NSString *const SWMainWindowController_NIB_Name;
+
 @class SWRootWireframe;
 /**
  Container window that displays directorySearchView and fileStackView
@@ -25,4 +28,5 @@
 - (void)switchToFileStackView;
 
 @property (nonatomic, weak) SWRootWireframe *rootWireframe;
+
 @end

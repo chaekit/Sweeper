@@ -23,10 +23,7 @@
 {
     NSString *selectedDirectoryPath = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
     self.rootWireframe = [[SWRootWireframe alloc] initWithDirectoryPathToDirectory:selectedDirectoryPath];
-    self.rootWindowController = [[SWMainWindowController alloc] initWithWindowNibName:@"SWMainWindowController"];
-    [self.rootWindowController setRootWireframe:self.rootWireframe];
-    [self.rootWireframe setMainWindowController:self.rootWindowController];
-    [self.rootWindowController showWindow:self];
+    [self.rootWireframe beginFlow];
     NSLog(@"starting service from handler");
 }
 

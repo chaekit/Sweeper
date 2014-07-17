@@ -25,6 +25,8 @@
 @property (nonatomic, strong) SWStackViewController *fileStackViewController;
 @property (nonatomic, strong) SWHomeDirectoryViewController *homeDirectoryViewController;
 
+@property (nonatomic, strong) SWMainWindowController *mainWindowController;
+
 @end
 
 @implementation SWRootWireframe
@@ -33,6 +35,7 @@
 {
     self = [super init];
     if (self) {
+        [self setupMainWindowController];
         [self setupFileStackHandlerForDirectoryAtPath:pathToDirectory];
         [self setupHomeDirectoryHandler];
         [self setupHomeDirectoryViewController];
@@ -41,7 +44,18 @@
     return self;
 }
 
+- (void)beginFlow
+{
+    [self.mainWindowController showWindow:self];
+}
+
 #pragma mark - Private initializer methods
+
+- (void)setupMainWindowController
+{
+    self.mainWindowController = [[SWMainWindowController alloc] initWithWindowNibName:SWMainWindowController_NIB_Name];
+    [self.mainWindowController setRootWireframe:self];
+}
 
 - (void)setupFileStackHandlerForDirectoryAtPath:(NSString *)pathToDirectory
 {
