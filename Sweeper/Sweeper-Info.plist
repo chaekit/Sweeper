@@ -39,7 +39,7 @@
 				<string>Sort with Sweeper</string>
 			</dict>
 			<key>NSMessage</key>
-			<string>fuckServices</string>
+			<string>sortWithSweeperServices</string>
 			<key>NSPortName</key>
 			<string>Sweeper</string>
 			<key>NSRequiredContext</key>

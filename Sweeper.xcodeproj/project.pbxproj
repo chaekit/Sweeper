@@ -25,6 +25,7 @@
 		19738E781875A6D900461F96 /* SweeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E771875A6D900461F96 /* SweeperTests.m */; };
 		19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E851875ADBA00461F96 /* SWUnProcessedFile.m */; };
 		19738E871875ADBA00461F96 /* SWUnProcessedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 19738E851875ADBA00461F96 /* SWUnProcessedFile.m */; };
+		197D41AB19782AE5000439A2 /* SWServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 197D41AA19782AE5000439A2 /* SWServiceHandler.m */; };
 		198501E619772E0700101592 /* SWHomeDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 198501E419772E0700101592 /* SWHomeDirectoryViewController.m */; };
 		198501E719772E0700101592 /* SWHomeDirectoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198501E519772E0700101592 /* SWHomeDirectoryViewController.xib */; };
 		198D297D187BE7C2001DA802 /* SWDirectorySearchCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 198D297C187BE7C2001DA802 /* SWDirectorySearchCellView.m */; };
@@ -104,6 +105,8 @@
 		19738E771875A6D900461F96 /* SweeperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SweeperTests.m; sourceTree = "<group>"; };
 		19738E841875ADBA00461F96 /* SWUnProcessedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWUnProcessedFile.h; path = Models/SWUnProcessedFile.h; sourceTree = "<group>"; };
 		19738E851875ADBA00461F96 /* SWUnProcessedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWUnProcessedFile.m; path = Models/SWUnProcessedFile.m; sourceTree = "<group>"; };
+		197D41A919782AE5000439A2 /* SWServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWServiceHandler.h; path = Controllers/SWServiceHandler.h; sourceTree = "<group>"; };
+		197D41AA19782AE5000439A2 /* SWServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWServiceHandler.m; path = Controllers/SWServiceHandler.m; sourceTree = "<group>"; };
 		198501E319772E0700101592 /* SWHomeDirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWHomeDirectoryViewController.h; path = Views/SWHomeDirectoryViewController/SWHomeDirectoryViewController.h; sourceTree = "<group>"; };
 		198501E419772E0700101592 /* SWHomeDirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWHomeDirectoryViewController.m; path = Views/SWHomeDirectoryViewController/SWHomeDirectoryViewController.m; sourceTree = "<group>"; };
 		198501E519772E0700101592 /* SWHomeDirectoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SWHomeDirectoryViewController.xib; path = Views/SWHomeDirectoryViewController/SWHomeDirectoryViewController.xib; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				19CC4B59197326E4003A8572 /* SWHomeDirectoryHandler.m */,
 				19CC4B5B19733AFC003A8572 /* SWRootWireframe.h */,
 				19CC4B5C19733AFC003A8572 /* SWRootWireframe.m */,
+				197D41A919782AE5000439A2 /* SWServiceHandler.h */,
+				197D41AA19782AE5000439A2 /* SWServiceHandler.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				19738E861875ADBA00461F96 /* SWUnProcessedFile.m in Sources */,
 				19CC4B6519735A8C003A8572 /* SWStackTableView.m in Sources */,
 				19DDBF8619037E3E000DADAC /* NSURL+Sweeper.m in Sources */,
+				197D41AB19782AE5000439A2 /* SWServiceHandler.m in Sources */,
 				19ACB3B718764D4700168B38 /* SWFileStackHandler.m in Sources */,
 				19738E611875A6D900461F96 /* SWAppDelegate.m in Sources */,
 				19CC4B6919735E06003A8572 /* SWFileStackCellView.m in Sources */,

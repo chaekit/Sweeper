@@ -25,15 +25,18 @@
 @property (nonatomic, strong) SWStackViewController *fileStackViewController;
 @property (nonatomic, strong) SWHomeDirectoryViewController *homeDirectoryViewController;
 
+@property (nonatomic, strong) SWMainWindowController *mainWindowController;
+
 @end
 
 @implementation SWRootWireframe
 
-- (instancetype)init
+- (instancetype)initWithDirectoryPathToDirectory:(NSString *)pathToDirectory
 {
     self = [super init];
     if (self) {
-        [self setupFileStackHandler];
+        [self setupMainWindowController];
+        [self setupFileStackHandlerForDirectoryAtPath:pathToDirectory];
         [self setupHomeDirectoryHandler];
         [self setupHomeDirectoryViewController];
         [self setupStackViewController];
@@ -41,14 +44,22 @@
     return self;
 }
 
+- (void)beginFlow
+{
+    [self.mainWindowController showWindow:self];
+}
 
 #pragma mark - Private initializer methods
 
-- (void)setupFileStackHandler
+- (void)setupMainWindowController
 {
-    // TODO : get rid of hardcoded path
-    NSString *pathToDesktop = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
-    self.fileStackHandler = [[SWFileStackHandler alloc] initWithPathToDirectory:pathToDesktop];
+    self.mainWindowController = [[SWMainWindowController alloc] initWithWindowNibName:SWMainWindowController_NIB_Name];
+    [self.mainWindowController setRootWireframe:self];
+}
+
+- (void)setupFileStackHandlerForDirectoryAtPath:(NSString *)pathToDirectory
+{
+    self.fileStackHandler = [[SWFileStackHandler alloc] initWithPathToDirectory:pathToDirectory];
     [self.fileStackHandler setDelegate:self];
 }
 
