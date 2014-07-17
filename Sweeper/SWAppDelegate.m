@@ -7,7 +7,6 @@
 //
 
 #import "SWAppDelegate.h"
-#import "SWFileStackViewController.h"
 #import "SWMainWindowController.h"
 
 @interface SWAppDelegate ()
@@ -21,6 +20,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     self.mainWindowController = [[SWMainWindowController alloc] initWithWindowNibName:@"SWMainWindowController"];
     [self.mainWindowController showWindow:self];
+    [self.window setReleasedWhenClosed:NO];
+    [self.window close];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%d", [defaults boolForKey:@"helped"]);
     if (![defaults boolForKey:@"helped"]){
