@@ -7,7 +7,6 @@
 //
 
 #import "SWAppDelegate.h"
-#import "SWFileStackViewController.h"
 #import "SWMainWindowController.h"
 
 @interface SWAppDelegate ()
