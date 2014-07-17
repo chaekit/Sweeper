@@ -8,10 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+FOUNDATION_EXPORT NSString * const SWDirectorySearchCellView_Identifier;
+
+/**
+ Cell that displays information about directories in home directory
+ */
 @interface SWDirectorySearchCellView : NSTableCellView
 
-@property (nonatomic, strong) IBOutlet NSTextField *fullPathTextField;
-@property (nonatomic, strong) IBOutlet NSTextField *nameTextField;
-@property (nonatomic, strong) IBOutlet NSImageView *iconImageView;
+/**
+ Updates the cell with given full path to the directory
+ @param pathTODirectory Full path to the directory
+ */
+- (void)updateWithPathToDirectory:(NSString *)pathToDirectory;
 
 @end

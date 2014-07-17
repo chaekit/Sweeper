@@ -8,10 +8,19 @@
 
 #import "SWAppDelegate.h"
 #import "SWFileStackViewController.h"
+#import "SWMainWindowController.h"
+
+@interface SWAppDelegate ()
+
+@property (nonatomic, strong) SWMainWindowController *mainWindowController;
+
+@end
 
 @implementation SWAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.mainWindowController = [[SWMainWindowController alloc] initWithWindowNibName:@"SWMainWindowController"];
+    [self.mainWindowController showWindow:self];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"%d", [defaults boolForKey:@"helped"]);
     if (![defaults boolForKey:@"helped"]){
