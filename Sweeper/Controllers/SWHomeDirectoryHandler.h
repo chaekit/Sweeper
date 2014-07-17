@@ -38,11 +38,23 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames;
  */
 @interface SWHomeDirectoryHandler : NSObject
 
-@property (nonatomic, weak) id<SWHomeDirectoryHandlerDelegate> delegate;
-
 /**
  All the files recursively in home directory.
  */
 @property (nonatomic, copy, readonly) NSArray *filesInHomeDirectory;
+
+/**
+ Recent search result
+ */
+@property (nonatomic, copy, readonly) NSArray *recentSearchResult;
+
+
+/**
+ Searche for directories that start with aPrefix
+ @param aPrefix prefix of the directories
+ */
+- (NSArray *)fileNamesWithPrefix:(NSString *)aPrefix;
+
+@property (nonatomic, weak) id<SWHomeDirectoryHandlerDelegate> delegate;
 
 @end

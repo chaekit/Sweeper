@@ -13,7 +13,7 @@ FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
 @class SWFileStack;
 @class SWStackViewController;
 
-@protocol SWStackViewControllerEventDelegte <NSObject>
+@protocol SWStackViewControllerEventDelegate <NSObject>
 
 /**
  Called when a stackViewController receives a remove file action
@@ -44,7 +44,7 @@ FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
  */
 @property (nonatomic, strong) SWFileStack *fileStackDataSource;
 
-@property (nonatomic, weak) id<SWStackViewControllerEventDelegte> delegate;
+@property (nonatomic, weak) id<SWStackViewControllerEventDelegate> delegate;
 
 /**
  Pops the top cell of the table view with given fileAction

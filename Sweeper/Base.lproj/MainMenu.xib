@@ -770,7 +770,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView identifier="SWDirectorySearchCellView" id="gA5-MW-wYG" customClass="SWDirectorySearchCellView">
+                                                <tableCellView id="gA5-MW-wYG">
                                                     <rect key="frame" x="1" y="1" width="613" height="63"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>

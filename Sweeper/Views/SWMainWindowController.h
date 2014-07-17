@@ -8,6 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+/**
+ Container window that displays directorySearchView and fileStackView
+ */
 @interface SWMainWindowController : NSWindowController
+
+/**
+ Shows diretorySearchView
+ */
+- (void)switchToDirectorySearchView;
+
+/**
+ Shows fileStackView
+ */
+- (void)switchToFileStackView;
 
 @end

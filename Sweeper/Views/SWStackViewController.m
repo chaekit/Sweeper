@@ -88,12 +88,6 @@ static void initialize_animation_colors() {
                                    withAnimation:kSWStackViewControllerDefaultCellPushAnimationOptions];
 }
 
-- (void)hideStackView
-{
-    [self resignFirstResponder];
-    [self.view setAlphaValue:0.0];
-}
-
 
 #pragma mark - SWStackTableViewEventDelegate methods
 

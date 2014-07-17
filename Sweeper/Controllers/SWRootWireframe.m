@@ -9,16 +9,21 @@
 #import "SWRootWireframe.h"
 #import "SWFileStackHandler.h"
 #import "SWHomeDirectoryHandler.h"
+#import "SWHomeDirectoryViewController.h"
+#import "SWStackViewController.h"
+#import "SWMainWindowController.h"
 
 @interface SWRootWireframe () <SWFileStackHandlerDelegate,
                                 SWHomeDirectoryHandlerDelegate,
-                                SWStackViewControllerEventDelegte>
+                                SWStackViewControllerEventDelegate,
+                                SWHomeDirectorySearchTableViewControllerDelegate>
 
 @property (nonatomic, strong) SWFileStackHandler *fileStackHandler;
 @property (nonatomic, strong) SWHomeDirectoryHandler *homeDirectoryHandler;
 @property (nonatomic, strong) NSArray *filesInHomeDirectory;
 
 @property (nonatomic, strong) SWStackViewController *fileStackViewController;
+@property (nonatomic, strong) SWHomeDirectoryViewController *homeDirectoryViewController;
 
 @end
 
@@ -29,7 +34,8 @@
     self = [super init];
     if (self) {
         [self setupFileStackHandler];
-//        [self setupHomeDirectoryHandler];
+        [self setupHomeDirectoryHandler];
+        [self setupHomeDirectoryViewController];
         [self setupStackViewController];
     }
     return self;
@@ -46,6 +52,7 @@
 - (void)setupHomeDirectoryHandler
 {
     self.homeDirectoryHandler = [[SWHomeDirectoryHandler alloc] init];
+    [self.homeDirectoryHandler setDelegate:self];
 }
 
 - (void)setupStackViewController
@@ -54,6 +61,13 @@
                                                                            bundle:nil];
     [self.fileStackViewController setDelegate:self];
     [self.fileStackViewController setFileStackDataSource:self.fileStackHandler.unprocessedFileStack];
+}
+
+- (void)setupHomeDirectoryViewController
+{
+    self.homeDirectoryViewController = [[SWHomeDirectoryViewController alloc] initWithNibName:SWHomDirectoryViewController_NIB_Name
+                                                                                       bundle:nil];
+    [self.homeDirectoryViewController setDelegate:self];
 }
 
 #pragma mark - SWFileStackHandlerDelegate methods
@@ -75,7 +89,7 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames
                 didFindFiles:(NSArray *)fileNames
              withQueryPrefix:(NSString *)queryPrefix
 {
-    
+    [self.homeDirectoryViewController updateHomeDirectoriesDataSource:fileNames];
 }
 
 
@@ -101,7 +115,26 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames
 
 - (void)stackViewConrollerDidReceiveMoveFileAction:(SWStackViewController *)stackViewController
 {
-    [self.fileStackViewController hideStackView];
+    [self.mainWindowController switchToDirectorySearchView];
+}
+
+#pragma mark - SWHomeDirectorySearchTableViewControllerDelegate methods
+
+- (void)directorySearchViewController:(SWHomeDirectoryViewController *)directorySearchViewController
+         didReceivedSearchQueryString:(NSString *)queryString
+{
+    [self.homeDirectoryHandler fileNamesWithPrefix:queryString];
+}
+
+- (void)directorySearchViewController:(SWHomeDirectoryViewController *)directorySearchViewController
+                         didSelectRow:(NSUInteger)rowIndex
+{
+    NSLog(@"%@", self.homeDirectoryHandler.recentSearchResult[rowIndex]);
+}
+
+- (void)directorySearchViewControllerDidCancelSearch:(SWHomeDirectoryViewController *)directorySearchViewController
+{
+    [self.mainWindowController switchToFileStackView];
 }
 
 @end
