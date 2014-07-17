@@ -132,7 +132,10 @@ didFinishMappingHomeDiretoryWithFileNames:(NSArray *)fileNames
 - (void)directorySearchViewController:(SWHomeDirectoryViewController *)directorySearchViewController
                          didSelectRow:(NSUInteger)rowIndex
 {
-    NSLog(@"%@", self.homeDirectoryHandler.recentSearchResult[rowIndex]);
+    [self.mainWindowController switchToFileStackView];
+    NSString *selectedDestinationPath = [self.homeDirectoryHandler.recentSearchResult[rowIndex] path];
+    [self.fileStackHandler moveHeadFileToDirectoryAtPath:selectedDestinationPath];
+    [self.fileStackViewController popStackCellViewForAction:SWFileActionMoveFile];
 }
 
 - (void)directorySearchViewControllerDidCancelSearch:(SWHomeDirectoryViewController *)directorySearchViewController
