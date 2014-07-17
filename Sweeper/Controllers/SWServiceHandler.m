@@ -21,12 +21,13 @@
 
 - (void)sortWithSweeperServices:(NSPasteboard *)pboard userData:(NSString *)userData error:(NSString **)error
 {
-    NSString *fileURL = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
-#ifdef DEBUG
-    fileURL = [NSString stringWithFormat:@"%@/Desktop", NSHomeDirectory()];
-#endif
+    NSString *selectedDirectoryPath = [[pboard propertyListForType:NSFilenamesPboardType] lastObject];
+    self.rootWireframe = [[SWRootWireframe alloc] initWithDirectoryPathToDirectory:selectedDirectoryPath];
     self.rootWindowController = [[SWMainWindowController alloc] initWithWindowNibName:@"SWMainWindowController"];
+    [self.rootWindowController setRootWireframe:self.rootWireframe];
+    [self.rootWireframe setMainWindowController:self.rootWindowController];
     [self.rootWindowController showWindow:self];
+    NSLog(@"starting service from handler");
 }
 
 - (void)registerPasteboardService

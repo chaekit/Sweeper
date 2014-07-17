@@ -14,7 +14,6 @@
 
 @interface SWMainWindowController ()
 
-@property (nonatomic, strong) SWRootWireframe *rootWireframe;
 @property (nonatomic, weak) IBOutlet NSView *fileStackViewContainerView;
 @property (nonatomic, weak) IBOutlet NSView *homeDirectoryViewContainerView;
 
@@ -25,8 +24,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.rootWireframe = [[SWRootWireframe alloc] init];
-    self.rootWireframe.mainWindowController = self;
     [self setupHomeDirectoryView];
     [self setupFileStackView];
 }

@@ -8,27 +8,25 @@
 
 #import "SWAppDelegate.h"
 #import "SWMainWindowController.h"
+#import "SWRootWireframe.h"
+#import "SWServiceHandler.h"
 
 @interface SWAppDelegate ()
 
-@property (nonatomic, strong) SWMainWindowController *mainWindowController;
+@property (nonatomic, strong) SWMainWindowController *rootWindowController;
+@property (nonatomic, strong) SWRootWireframe *rootWireframe;
+@property (nonatomic, strong) SWServiceHandler *serviceHandler;
 
 @end
 
 @implementation SWAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    self.mainWindowController = [[SWMainWindowController alloc] initWithWindowNibName:@"SWMainWindowController"];
-    [self.mainWindowController showWindow:self];
+    self.serviceHandler = [[SWServiceHandler alloc] init];
+    [NSApp setServicesProvider:self.serviceHandler];
+    NSUpdateDynamicServices();
     [self.window setReleasedWhenClosed:NO];
     [self.window close];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"%d", [defaults boolForKey:@"helped"]);
-    if (![defaults boolForKey:@"helped"]){
-        NSLog(@"Helped Not Set");
-    }else{
-        NSLog(@"Helped Set");
-    }
 }
 
 @end

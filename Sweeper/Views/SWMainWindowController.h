@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SWRootWireframe;
 /**
  Container window that displays directorySearchView and fileStackView
  */
@@ -23,4 +24,5 @@
  */
 - (void)switchToFileStackView;
 
+@property (nonatomic, weak) SWRootWireframe *rootWireframe;
 @end
