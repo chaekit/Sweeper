@@ -41,6 +41,9 @@
     return self;
 }
 
+
+#pragma mark - Private initializer methods
+
 - (void)setupFileStackHandler
 {
     // TODO : get rid of hardcoded path
