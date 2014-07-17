@@ -58,9 +58,4 @@ FOUNDATION_EXPORT NSString * SWStackViewController_NIB_Name;
  */
 - (void)pushStackCellViewForAction:(SWFileAction)fileAction;
 
-/**
- Hides the stack view.
- */
-- (void)hideStackView;
-
 @end

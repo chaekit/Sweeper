@@ -48,6 +48,8 @@ static void initialize_animation_colors() {
 
 @implementation SWStackViewController
 
+#pragma mark - Overriden methods
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -55,10 +57,23 @@ static void initialize_animation_colors() {
     [self.fileStackTableView setKeyEventDelegate:self];
 }
 
+- (BOOL)becomeFirstResponder
+{
+    [super becomeFirstResponder];
+    [self.view.window makeFirstResponder:self.fileStackTableView];
+    return YES;
+}
+
+
+#pragma mark - Private initializer methods
+
 - (void)setupDefaultProperties
 {
     [self.view setWantsLayer:YES];
 }
+
+
+#pragma mark - Public interface methods
 
 - (void)popStackCellViewForAction:(SWFileAction)fileAction
 {
@@ -117,7 +132,7 @@ static void initialize_animation_colors() {
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    if (![[tableColumn identifier] isEqualToString:kSWStackViewControllerStackViewCellColumnIdentifier]) {
+    if ([[tableColumn identifier] isEqualToString:kSWStackViewControllerStackViewCellColumnIdentifier] == NO) {
         return nil;
     }
     
