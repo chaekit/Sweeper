@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1907A37E1960B287006645DA /* RMBlurredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1907A37D1960B287006645DA /* RMBlurredView.m */; };
+		1907A3801960B338006645DA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1907A37F1960B338006645DA /* QuartzCore.framework */; };
 		190953F31876BD0C00943549 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
 		190953F61876BD6600943549 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
 		190953F81876BD9C00943549 /* OCMock.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 190953F11876BD0C00943549 /* OCMock.framework */; };
@@ -81,6 +83,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1907A37C1960B287006645DA /* RMBlurredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMBlurredView.h; sourceTree = "<group>"; };
+		1907A37D1960B287006645DA /* RMBlurredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMBlurredView.m; sourceTree = "<group>"; };
+		1907A37F1960B338006645DA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		190953F11876BD0C00943549 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = Frameworks/OCMock.framework; sourceTree = "<group>"; };
 		19487F2B1876A9A2003B637B /* SWProcessedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWProcessedFile.h; path = Models/SWProcessedFile.h; sourceTree = "<group>"; };
 		19487F2C1876A9A2003B637B /* SWProcessedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWProcessedFile.m; path = Models/SWProcessedFile.m; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1907A3801960B338006645DA /* QuartzCore.framework in Frameworks */,
 				19B94DEB18ED0C7D00C7436F /* QuickLook.framework in Frameworks */,
 				19738E4E1875A6D900461F96 /* Cocoa.framework in Frameworks */,
 			);
@@ -160,6 +166,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1907A3781960B23B006645DA /* RMBlurredView */ = {
+			isa = PBXGroup;
+			children = (
+				1907A37C1960B287006645DA /* RMBlurredView.h */,
+				1907A37D1960B287006645DA /* RMBlurredView.m */,
+			);
+			name = RMBlurredView;
+			sourceTree = "<group>";
+		};
 		19738E411875A6D900461F96 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +197,8 @@
 		19738E4C1875A6D900461F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1907A37F1960B338006645DA /* QuartzCore.framework */,
+				1907A3781960B23B006645DA /* RMBlurredView */,
 				19B94DEA18ED0C7D00C7436F /* QuickLook.framework */,
 				190953F11876BD0C00943549 /* OCMock.framework */,
 				19738E4D1875A6D900461F96 /* Cocoa.framework */,
@@ -435,6 +452,8 @@
 				19738E5A1875A6D900461F96 /* main.m in Sources */,
 				198D297D187BE7C2001DA802 /* SWDirectorySearchCellView.m in Sources */,
 				19CC4B5D19733AFC003A8572 /* SWRootWireframe.m in Sources */,
+				1907A37E1960B287006645DA /* RMBlurredView.m in Sources */,
+				19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
