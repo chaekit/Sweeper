@@ -453,7 +453,6 @@
 				198D297D187BE7C2001DA802 /* SWDirectorySearchCellView.m in Sources */,
 				19CC4B5D19733AFC003A8572 /* SWRootWireframe.m in Sources */,
 				1907A37E1960B287006645DA /* RMBlurredView.m in Sources */,
-				19ACB3BD1876540E00168B38 /* SWFileStackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,7 +595,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
 				INFOPLIST_FILE = "Sweeper/Sweeper-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -616,7 +615,7 @@
 				GCC_PREFIX_HEADER = "Sweeper/Sweeper-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				INFOPLIST_FILE = "Sweeper/Sweeper-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
