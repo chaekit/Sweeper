@@ -10,6 +10,7 @@
 #import "SWStackTableView.h"
 #import "SWFileStackCellView.h"
 #import "SWFileStack.h"
+#import "RMBlurredView.h"
 
 NSString * SWStackViewController_NIB_Name = @"SWStackViewController";
 
@@ -43,6 +44,7 @@ static void initialize_animation_colors() {
                                         NSTableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet SWStackTableView *fileStackTableView;
+@property (nonatomic, weak) IBOutlet RMBlurredView *blurredView;
 
 @end
 
@@ -54,6 +56,7 @@ static void initialize_animation_colors() {
 {
     [super awakeFromNib];
     [self setupDefaultProperties];
+    [self setupBlurredView];
     [self.fileStackTableView setKeyEventDelegate:self];
 }
 
@@ -70,6 +73,12 @@ static void initialize_animation_colors() {
 - (void)setupDefaultProperties
 {
     [self.view setWantsLayer:YES];
+}
+
+- (void)setupBlurredView
+{
+    self.blurredView.blurRadius = 5.0;
+    self.blurredView.layer.backgroundColor = [NSColor clearColor].CGColor;
 }
 
 
